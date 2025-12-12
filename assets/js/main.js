@@ -10,6 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initNavbar();
     initMobileMenu();
+    // Ensure menu icon is always set to three-line hamburger
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    if (menuToggle) {
+        const icon = menuToggle.querySelector('i');
+        if (icon) {
+            icon.className = 'feather-menu';
+            icon.setAttribute('data-feather', 'menu');
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        }
+    }
     initSmoothScroll();
     initAOS();
     initCart();
@@ -81,12 +93,26 @@ function initMobileMenu() {
     
     if (toggle && menu) {
         toggle.addEventListener('click', () => {
+            const isActive = menu.classList.contains('active');
             menu.classList.toggle('active');
+            // Keep the menu icon always as three-line hamburger (don't change to X)
             const icon = toggle.querySelector('i');
             if (icon) {
-                icon.className = menu.classList.contains('active') 
-                    ? 'feather-x' 
-                    : 'feather-menu';
+                // Always keep it as menu icon
+                icon.className = 'feather-menu';
+                icon.setAttribute('data-feather', 'menu');
+                // Re-initialize Feather Icons to render the icon
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
+            }
+            // Prevent body scroll when menu is open
+            if (window.innerWidth <= 768) {
+                if (menu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
             }
         });
         
@@ -96,11 +122,101 @@ function initMobileMenu() {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 if (icon) {
+                    // Always keep it as menu icon (three-line hamburger)
                     icon.className = 'feather-menu';
+                    icon.setAttribute('data-feather', 'menu');
+                    // Re-initialize Feather Icons to render the icon
+                    if (typeof feather !== 'undefined') {
+                        feather.replace();
+                    }
+                }
+                // Restore body scroll when menu is closed
+                if (window.innerWidth <= 768) {
+                    document.body.style.overflow = '';
                 }
             }
         });
     }
+    
+    // Dropdown toggle for mobile and tablet using event delegation
+    document.addEventListener('click', (e) => {
+        const dropdownToggle = e.target.closest('.dropdown-toggle');
+        if (dropdownToggle && window.innerWidth <= 1024) {
+            e.preventDefault();
+            e.stopPropagation();
+            const dropdown = dropdownToggle.closest('.dropdown');
+            if (dropdown) {
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+                // Toggle current dropdown
+                const isActive = dropdown.classList.contains('active');
+                dropdown.classList.toggle('active');
+                
+                // Force reflow to ensure CSS applies
+                void dropdown.offsetHeight;
+                
+                // Ensure dropdown menu is visible
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                if (dropdownMenu) {
+                    if (dropdown.classList.contains('active')) {
+                        dropdownMenu.style.display = 'block';
+                        dropdownMenu.style.visibility = 'visible';
+                        dropdownMenu.style.opacity = '1';
+                        dropdownMenu.style.zIndex = '1002';
+                        
+                        // Make all list items and links visible
+                        const listItems = dropdownMenu.querySelectorAll('li');
+                        listItems.forEach(li => {
+                            li.style.display = 'block';
+                            li.style.visibility = 'visible';
+                            li.style.opacity = '1';
+                            
+                            const links = li.querySelectorAll('a');
+                            links.forEach(link => {
+                                link.style.display = 'block';
+                                link.style.visibility = 'visible';
+                                link.style.opacity = '1';
+                                link.style.color = '';
+                                link.style.padding = '0.75rem 1.5rem';
+                            });
+                        });
+                    } else {
+                        dropdownMenu.style.display = 'none';
+                        dropdownMenu.style.visibility = 'hidden';
+                        dropdownMenu.style.opacity = '0';
+                    }
+                }
+            }
+        } else if (window.innerWidth <= 1024) {
+            // Close dropdowns when clicking outside
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                    if (dropdownMenu) {
+                        dropdownMenu.style.display = 'none';
+                        dropdownMenu.style.visibility = 'hidden';
+                        dropdownMenu.style.opacity = '0';
+                    }
+                });
+            }
+        }
+    });
+    
+    // Close all dropdowns on window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }, 250);
+    });
 }
 
 // Smooth Scroll
