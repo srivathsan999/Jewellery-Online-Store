@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle"><i class="feather-moon" id="themeIcon" data-feather="moon"></i></button>
+                    <a href="cart.html" class="icon-btn"><i class="feather-shopping-cart" data-feather="shopping-cart"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><i class="feather-heart" data-feather="heart"></i><span class="badge" id="wishlistBadge">0</span></a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="feather-menu"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <nav class="breadcrumbs" id="breadcrumbs"></nav>
+    </div>
+
+    <section class="section blog-section" style="padding-top: 2rem;">
+        <div class="container">
+            <h1 class="page-title" data-aos="fade-up">Our Blog</h1>
+            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">Latest news, tips, and insights about jewellery</p>
+            
+            <div class="blog-toolbar" style="display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; flex-wrap: wrap; gap: 1rem;">
+                <div class="blog-search">
+                    <input type="text" placeholder="Search articles..." style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 100%; max-width: 300px;">
+                </div>
+                <div class="blog-categories">
+                    <select style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                        <option>All Categories</option>
+                        <option>Craftsmanship</option>
+                        <option>Guide</option>
+                        <option>Education</option>
+                        <option>Care</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="blog-grid" id="blogGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <!-- Blog posts will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer"></footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const breadcrumbs = createBreadcrumbs([
+                { text: 'Home', url: 'index.html' },
+                { text: 'Blog', url: 'blog.html' }
+            ]);
+            document.getElementById('breadcrumbs').appendChild(breadcrumbs);
+            
+            const grid = document.getElementById('blogGrid');
+            blogPostsData.forEach((post, index) => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index % 3) * 100);
+                const blogImages = {
+                    1: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop',
+                    2: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=400&fit=crop',
+                    3: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop',
+                    4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
+                    5: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=400&fit=crop',
+                    6: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
+                    7: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop'
+                };
+                card.innerHTML = `
+                    <div class="blog-card-image" style="aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 1rem; overflow: hidden;">
+                        <img src="${blogImages[post.id] || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h2 class="blog-card-title" style="font-size: 1.5rem; margin-bottom: 0.75rem;">
+                        <a href="blog-details.html?id=${post.id}" style="color: var(--text-primary);">${post.title}</a>
+                    </h2>
+                    <p class="blog-card-excerpt" style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">${post.excerpt}</p>
+                `;
+                grid.appendChild(card);
+            });
+        });
+    </script>
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        [data-theme="dark"] .blog-card {
+            background: var(--dark-bg);
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .blog-card-image {
+            flex-shrink: 0;
+        }
+        .blog-card-meta {
+            flex-shrink: 0;
+        }
+        .blog-card-title {
+            flex-shrink: 0;
+        }
+        .blog-card-excerpt {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+        }
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</body>
+</html>
+

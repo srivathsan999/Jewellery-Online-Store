@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bracelets - Jewellery Online Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html" class="active">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle"><i class="feather-moon" id="themeIcon" data-feather="moon"></i></button>
+                    <a href="cart.html" class="icon-btn"><i class="feather-shopping-cart" data-feather="shopping-cart"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><i class="feather-heart" data-feather="heart"></i><span class="badge" id="wishlistBadge">0</span></a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="feather-menu"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <nav class="breadcrumbs" id="breadcrumbs"></nav>
+    </div>
+
+    <section class="section category-header" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="category-banner" data-aos="fade-in" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=1200&h=400&fit=crop'); background-size: cover; background-position: center; padding: 4rem 2rem; border-radius: var(--radius-lg); text-align: center; color: white; margin-bottom: 3rem;">
+                <h1 class="page-title" style="color: white; margin-bottom: 1rem;">Bracelets</h1>
+                <p style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; width: 100%; margin: 0 auto; padding: 0 1rem;">Adorn your wrists with elegance. Discover our collection of stunning bracelets for every style.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="shop-toolbar">
+                <div class="toolbar-left">
+                    <span id="productCount">5 products</span>
+                </div>
+                <div class="toolbar-right">
+                    <select class="sort-select" id="sortSelect" onchange="sortCategoryProducts()">
+                        <option value="popularity">Sort by: Popularity</option>
+                        <option value="latest">Sort by: Latest</option>
+                        <option value="price-low">Sort by: Price: Low to High</option>
+                        <option value="price-high">Sort by: Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid grid-4" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer"></footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const breadcrumbs = createBreadcrumbs([
+                { text: 'Home', url: 'index.html' },
+                { text: 'Categories', url: 'shop.html' },
+                { text: 'Bracelets', url: '#' }
+            ]);
+            document.getElementById('breadcrumbs').appendChild(breadcrumbs);
+            
+            const products = productsData.filter(p => p.category === 'bracelets');
+            const grid = document.getElementById('productsGrid');
+            products.forEach(product => {
+                const card = createProductCard(product);
+                card.setAttribute('data-aos', 'fade-up');
+                grid.appendChild(card);
+            });
+            document.getElementById('productCount').textContent = `${products.length} product${products.length !== 1 ? 's' : ''}`;
+            
+            // Update wishlist button states after rendering
+            setTimeout(() => {
+                if (typeof window.updateAllWishlistButtons !== 'undefined') {
+                    window.updateAllWishlistButtons();
+                }
+            }, 100);
+            
+            // Initialize Feather Icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+        
+        function sortCategoryProducts() {
+            const sort = document.getElementById('sortSelect').value;
+            const grid = document.getElementById('productsGrid');
+            const products = Array.from(grid.children);
+            products.sort((a, b) => {
+                const aId = parseInt(a.dataset.productId);
+                const bId = parseInt(b.dataset.productId);
+                const aProduct = productsData.find(p => p.id === aId);
+                const bProduct = productsData.find(p => p.id === bId);
+                
+                if (sort === 'popularity') {
+                    const aScore = (aProduct.featured ? 10 : 0) + (aProduct.trending ? 5 : 0);
+                    const bScore = (bProduct.featured ? 10 : 0) + (bProduct.trending ? 5 : 0);
+                    return bScore - aScore;
+                }
+                if (sort === 'latest') {
+                    return bProduct.id - aProduct.id;
+                }
+                if (sort === 'price-low') return aProduct.price - bProduct.price;
+                if (sort === 'price-high') return bProduct.price - aProduct.price;
+                return 0;
+            });
+            grid.innerHTML = '';
+            products.forEach(p => grid.appendChild(p));
+        }
+    </script>
+</body>
+</html>
+

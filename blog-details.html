@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Jewellery Online Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <span class="brand-text">JEWELLERY</span>
+                        <span class="brand-tagline">Timeless Elegance</span>
+                    </a>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle"><i class="feather-moon" id="themeIcon" data-feather="moon"></i></button>
+                    <a href="cart.html" class="icon-btn"><i class="feather-shopping-cart" data-feather="shopping-cart"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><i class="feather-heart" data-feather="heart"></i><span class="badge" id="wishlistBadge">0</span></a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="feather-menu"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <nav class="breadcrumbs" id="breadcrumbs"></nav>
+    </div>
+
+    <section class="section blog-details-section" style="padding-top: 2rem;">
+        <div class="container">
+            <article class="blog-article" id="blogArticle">
+                <!-- Blog content will be loaded here -->
+            </article>
+        </div>
+    </section>
+
+    <section class="section related-posts-section" style="background: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Related Posts</h2>
+            <div class="blog-grid" id="relatedPosts" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <!-- Related posts will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer"></footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = parseInt(urlParams.get('id')) || 1;
+            const post = blogPostsData.find(p => p.id === postId) || blogPostsData[0];
+            
+            const breadcrumbs = createBreadcrumbs([
+                { text: 'Home', url: 'index.html' },
+                { text: 'Blog', url: 'blog.html' },
+                { text: post.title, url: '#' }
+            ]);
+            document.getElementById('breadcrumbs').appendChild(breadcrumbs);
+            
+            const blogImages = {
+                1: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=1200&h=600&fit=crop',
+                2: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=1200&h=600&fit=crop',
+                3: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1200&h=600&fit=crop',
+                4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop'
+            };
+            const article = document.getElementById('blogArticle');
+            article.innerHTML = `
+                <div class="blog-featured-image" style="aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 2rem; overflow: hidden;">
+                    <img src="${blogImages[post.id] || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop'}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="blog-meta" style="display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; font-size: 0.875rem; color: var(--text-light);">
+                    <span><i class="feather-calendar"></i> ${new Date(post.date).toLocaleDateString()}</span>
+                    <span><i class="feather-user"></i> ${post.author}</span>
+                    <span><i class="feather-tag"></i> ${post.category}</span>
+                </div>
+                <h1 class="blog-title" style="font-size: 3rem; margin-bottom: 1.5rem;">${post.title}</h1>
+                <div class="blog-content" style="max-width: 800px; width: 100%; margin: 0 auto;">
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">${post.excerpt}</p>
+                    <div style="line-height: 1.8; color: var(--text-secondary);">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2 style="font-size: 2rem; margin: 2rem 0 1rem; color: var(--text-primary);">Understanding Quality</h2>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    </div>
+                </div>
+                <div class="author-box" style="background: var(--bg-light); border-radius: var(--radius-lg); padding: 2rem; margin-top: 3rem; display: flex; gap: 2rem; align-items: center;">
+                    <div style="width: 80px; height: 80px; max-width: 100%; background: var(--accent-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                        <i class="feather-user"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem;">${post.author}</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Expert Jewellery Consultant</p>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">With over 15 years of experience in the jewellery industry, ${post.author} brings deep expertise in craftsmanship, design, and quality assessment.</p>
+                    </div>
+                </div>
+            `;
+            
+            // Load related posts
+            const related = blogPostsData.filter(p => p.id !== post.id).slice(0, 3);
+            const relatedContainer = document.getElementById('relatedPosts');
+            related.forEach((relatedPost, index) => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', index * 100);
+                const blogImages = {
+                    1: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop',
+                    2: 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=400&fit=crop',
+                    3: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop',
+                    4: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'
+                };
+                card.innerHTML = `
+                    <div class="blog-card-image" style="aspect-ratio: 16/9; border-radius: var(--radius-lg); margin-bottom: 1rem; overflow: hidden;">
+                        <img src="${blogImages[relatedPost.id] || 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'}" alt="${relatedPost.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="blog-card-meta" style="display: flex; gap: 1rem; font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.5rem;">
+                        <span>${new Date(relatedPost.date).toLocaleDateString()}</span>
+                        <span>•</span>
+                        <span>${relatedPost.category}</span>
+                    </div>
+                    <h3 class="blog-card-title" style="font-size: 1.25rem; margin-bottom: 0.75rem;">
+                        <a href="blog-details.html?id=${relatedPost.id}" style="color: var(--text-primary);">${relatedPost.title}</a>
+                    </h3>
+                    <p class="blog-card-excerpt" style="color: var(--text-secondary); font-size: 0.875rem;">${relatedPost.excerpt}</p>
+                `;
+                relatedContainer.appendChild(card);
+            });
+        });
+    </script>
+    <style>
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        [data-theme="dark"] .blog-card {
+            background: var(--dark-bg);
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem !important;
+            }
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</body>
+</html>
+

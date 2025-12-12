@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop our complete collection of premium jewellery - necklaces, earrings, rings, bracelets and more.">
+    <title>Shop - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
+                    </button>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">
+                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                        <i class="feather-heart" data-feather="heart"></i>
+                        <span class="badge" id="wishlistBadge">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <i class="feather-menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="container" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <nav class="breadcrumbs" id="breadcrumbs"></nav>
+    </div>
+
+    <!-- Shop Header -->
+    <section class="section shop-header">
+        <div class="container">
+            <h1 class="page-title" data-aos="fade-up">Shop All Products</h1>
+            <p class="page-subtitle" data-aos="fade-up" data-aos-delay="100">Discover our complete collection</p>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="section shop-content">
+        <div class="container">
+            <div class="shop-layout">
+                <!-- Sidebar Filters -->
+                <aside class="shop-sidebar" data-aos="fade-right">
+                    <div class="filter-section">
+                        <h3 class="filter-title">Filters</h3>
+                        
+                        <div class="filter-group">
+                            <h4 class="filter-group-title">Category</h4>
+                            <div class="filter-checkboxes">
+                                <label><input type="checkbox" value="necklaces" class="category-filter"> Necklaces</label>
+                                <label><input type="checkbox" value="earrings" class="category-filter"> Earrings</label>
+                                <label><input type="checkbox" value="rings" class="category-filter"> Rings</label>
+                                <label><input type="checkbox" value="bracelets" class="category-filter"> Bracelets</label>
+                            </label>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4 class="filter-group-title">Material</h4>
+                            <div class="filter-checkboxes">
+                                <label><input type="checkbox" value="gold" class="material-filter"> Gold</label>
+                                <label><input type="checkbox" value="platinum" class="material-filter"> Platinum</label>
+                                <label><input type="checkbox" value="diamond" class="material-filter"> Diamond</label>
+                                <label><input type="checkbox" value="pearl" class="material-filter"> Pearl</label>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4 class="filter-group-title">Collection</h4>
+                            <div class="filter-checkboxes">
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="width: 100%;" onclick="applyFilters()">Apply Filters</button>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 0.5rem;" onclick="clearFilters()">Clear All</button>
+                    </div>
+                </aside>
+                
+                <!-- Main Content -->
+                <main class="shop-main">
+                    <!-- Toolbar -->
+                    <div class="shop-toolbar">
+                        <div class="toolbar-left">
+                            <span id="productCount">24 products</span>
+                        </div>
+                        <div class="toolbar-right">
+                            <select class="sort-select" id="sortSelect" onchange="sortProducts()">
+                                <option value="popularity">Sort by: Popularity</option>
+                                <option value="latest">Sort by: Latest</option>
+                                <option value="name">Sort by: Name A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div class="products-grid grid-4" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div id="paginationContainer"></div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer"></footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/shop.js"></script>
+</body>
+</html>
+

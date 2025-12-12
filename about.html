@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle"><i class="feather-moon" id="themeIcon" data-feather="moon"></i></button>
+                    <a href="cart.html" class="icon-btn"><i class="feather-shopping-cart" data-feather="shopping-cart"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist"><i class="feather-heart" data-feather="heart"></i><span class="badge" id="wishlistBadge">0</span></a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="feather-menu"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <nav class="breadcrumbs" id="breadcrumbs"></nav>
+    </div>
+
+    <section class="section about-hero" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="about-hero-content" data-aos="fade-up" style="text-align: center;">
+                <h1 class="page-title" style="text-align: center;">Our Story</h1>
+                <p class="page-subtitle" style="max-width: 800px; margin: 0 auto; text-align: center;">Timeless Elegance. Modern Style. We craft exquisite jewellery pieces that celebrate life's precious moments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section brand-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text" data-aos="fade-right">
+                    <h2>Brand Story</h2>
+                    <p>Founded with a passion for creating beautiful, timeless jewellery, our brand has been dedicated to excellence for over two decades. We believe that every piece of jewellery tells a story and should be crafted with the utmost care and attention to detail.</p>
+                    <p>Our master craftsmen combine traditional techniques with modern design sensibilities, creating pieces that are both classic and contemporary. Each piece is carefully handcrafted using only the finest materials, ensuring that your jewellery will be treasured for generations to come.</p>
+                </div>
+                <div class="story-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=800&fit=crop" alt="Jewellery Craftsmanship" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-choose-us" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Why Choose Us</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="feather-award" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>Premium Quality</h3>
+                    <p>Only the finest materials and craftsmanship go into every piece we create.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="feather-shield" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>Lifetime Warranty</h3>
+                    <p>Every purchase comes with our comprehensive lifetime warranty guarantee.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="feather-truck" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>Free Shipping</h3>
+                    <p>Complimentary shipping on all orders over $500 worldwide.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="feather-heart" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>Expert Care</h3>
+                    <p>Our team provides personalized service and expert guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section craftsmanship">
+        <div class="container">
+            <div class="craftsmanship-content">
+                <div class="craftsmanship-image" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=800&fit=crop" alt="Luxury Craftsmanship" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);">
+                </div>
+                <div class="craftsmanship-text" data-aos="fade-left">
+                    <h2>Luxury Craftsmanship</h2>
+                    <p>Our commitment to excellence is evident in every detail. Each piece undergoes a meticulous process from design to final polish, ensuring perfection at every stage.</p>
+                    <ul class="feature-list">
+                        <li><i class="feather-check"></i> Hand-selected gemstones and precious metals</li>
+                        <li><i class="feather-check"></i> Master craftsmen with decades of experience</li>
+                        <li><i class="feather-check"></i> Traditional techniques combined with modern innovation</li>
+                        <li><i class="feather-check"></i> Rigorous quality control at every step</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section materials-section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Materials & Purity</h2>
+            </div>
+            <div class="materials-grid">
+                <div class="material-card" data-aos="fade-up">
+                    <h3>18K Gold</h3>
+                    <p>Premium 18-karat gold, the perfect balance of purity and durability for everyday wear.</p>
+                </div>
+                <div class="material-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Platinum</h3>
+                    <p>Platinum 950, the most precious and durable metal, perfect for heirloom pieces.</p>
+                </div>
+                <div class="material-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Diamonds</h3>
+                    <p>Conflict-free diamonds certified by leading gemological institutes worldwide.</p>
+                </div>
+                <div class="material-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Pearls</h3>
+                    <p>Lustrous South Sea and Akoya pearls, selected for their exceptional quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section timeline-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Journey</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-year">2000</div>
+                    <div class="timeline-content">
+                        <h3>Founded</h3>
+                        <p>Started as a small family business with a vision to create timeless jewellery.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-content">
+                        <h3>Expansion</h3>
+                        <p>Opened our first flagship store and launched our online presence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Global Reach</h3>
+                        <p>Expanded internationally, serving customers in over 50 countries worldwide.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>Innovation</h3>
+                        <p>Launched our luxury line and introduced sustainable practices across all operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section team-section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Sarah Johnson - Creative Director" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <p>Creative Director</p>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Michael Chen - Master Craftsman" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3>Michael Chen</h3>
+                    <p>Master Craftsman</p>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Emily Rodriguez - Quality Assurance" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3>Emily Rodriguez</h3>
+                    <p>Quality Assurance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer"></footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const breadcrumbs = createBreadcrumbs([
+                { text: 'Home', url: 'index.html' },
+                { text: 'About', url: 'about.html' }
+            ]);
+            document.getElementById('breadcrumbs').appendChild(breadcrumbs);
+        });
+    </script>
+    <style>
+        .story-content, .craftsmanship-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            margin-top: var(--spacing-lg);
+        }
+        .features-grid, .materials-grid, .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        .feature-card, .material-card {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        [data-theme="dark"] .feature-card,
+        [data-theme="dark"] .material-card {
+            background: var(--dark-bg);
+        }
+        .timeline {
+            max-width: 800px;
+            margin: var(--spacing-lg) auto;
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-left: 2px solid var(--primary-color);
+            padding-left: var(--spacing-md);
+        }
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-image {
+            margin-bottom: var(--spacing-sm);
+        }
+        @media (max-width: 768px) {
+            .story-content, .craftsmanship-content {
+                grid-template-columns: 1fr;
+            }
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
+

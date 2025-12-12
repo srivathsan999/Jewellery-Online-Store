@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Jewellery Online Store - Timeless Elegance. Modern Style. Shop luxury necklaces, earrings, rings, bracelets and more.">
+    <meta name="keywords" content="jewellery, jewelry, gold, diamond, luxury, necklaces, earrings, rings, bracelets">
+    <title>Jewellery Online Store - Timeless Elegance. Modern Style.</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
+                    </button>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">
+                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                        <i class="feather-heart" data-feather="heart"></i>
+                        <span class="badge" id="wishlistBadge">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <i class="feather-menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" data-aos="fade-in">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1920&h=1080&fit=crop" alt="Luxury Jewellery Collection" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                    Timeless Elegance.<br>
+                    <span class="gradient-text">Modern Style.</span>
+                </h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Discover our exquisite collection of handcrafted jewellery, where tradition meets contemporary design.
+                </p>
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+                    <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                    <a href="shop.html" class="btn btn-outline">View Collections</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="feather-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section featured-categories">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Shop by Category</h2>
+                <p class="section-subtitle">Explore our curated collections</p>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Products -->
+    <section class="section trending-products">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Trending Now</h2>
+                <p class="section-subtitle">Most loved pieces this season</p>
+            </div>
+            <div class="products-carousel" id="trendingCarousel">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="section new-arrivals">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">New Arrivals</h2>
+                <p class="section-subtitle">Fresh designs just for you</p>
+            </div>
+            <div class="products-grid" id="newArrivalsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+            <div class="text-center" data-aos="fade-up" style="margin-top: 3rem;">
+                <a href="shop.html" class="btn btn-outline">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestseller Section -->
+    <section class="section bestseller-section">
+        <div class="container">
+            <div class="bestseller-content">
+                <div class="bestseller-image" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&h=800&fit=crop" alt="Signature Collection Jewellery" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);">
+                </div>
+                <div class="bestseller-info" data-aos="fade-left">
+                    <span class="section-label">Bestseller</span>
+                    <h2 class="section-title">The Signature Collection</h2>
+                    <p class="bestseller-description">
+                        Our most beloved collection, featuring timeless designs crafted with the finest materials. 
+                        Each piece tells a story of elegance and sophistication.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="feather-check"></i> 18K Gold & Diamond</li>
+                        <li><i class="feather-check"></i> Handcrafted Excellence</li>
+                        <li><i class="feather-check"></i> Lifetime Warranty</li>
+                        <li><i class="feather-check"></i> Free Shipping Worldwide</li>
+                    </ul>
+                    <a href="shop.html" class="btn btn-primary">Explore Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Collection Banner -->
+    <section class="section seasonal-banner" data-aos="fade-in" style="position: relative; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1920&h=600&fit=crop'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="banner-content">
+                <h2 class="banner-title">Spring Collection 2024</h2>
+                <p class="banner-subtitle">Fresh designs inspired by nature's beauty</p>
+                <a href="shop.html?collection=spring" class="btn btn-primary">Shop Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Trusted by thousands worldwide</p>
+            </div>
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <h2 class="newsletter-title">Stay in the Loop</h2>
+                <p class="newsletter-subtitle">Subscribe to receive exclusive offers and new collection updates</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <!-- Footer content will be loaded from components -->
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/home.js"></script>
+    <script>
+        // Initialize Feather Icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle"><i class="feather-moon" id="themeIcon" data-feather="moon"></i></button>
+                    <a href="wishlist.html" class="icon-btn active"><i class="feather-heart" data-feather="heart"></i><span class="badge" id="wishlistBadge">0</span></a>
+                    <a href="cart.html" class="icon-btn"><i class="feather-shopping-cart" data-feather="shopping-cart"></i><span class="badge" id="cartBadge">0</span></a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="feather-menu"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <nav class="breadcrumbs" id="breadcrumbs"></nav>
+    </div>
+
+    <section class="section wishlist-page">
+        <div class="container">
+            <h1 class="page-title" data-aos="fade-up">My Wishlist</h1>
+            <div class="products-grid grid-4" id="wishlistGrid" style="margin-top: 2rem;"></div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer"></footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Feather Icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+            
+            const breadcrumbs = createBreadcrumbs([
+                { text: 'Home', url: 'index.html' },
+                { text: 'Wishlist', url: 'wishlist.html' }
+            ]);
+            document.getElementById('breadcrumbs').appendChild(breadcrumbs);
+            
+            loadWishlist();
+            window.addEventListener('wishlistUpdated', loadWishlist);
+        });
+        
+        function loadWishlist() {
+            const grid = document.getElementById('wishlistGrid');
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            
+            if (wishlist.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                        <i class="feather-heart" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                        <h2>Your wishlist is empty</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Start adding items you love!</p>
+                        <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = '';
+            wishlist.forEach(item => {
+                const product = productsData.find(p => p.id === item.id);
+                if (product) {
+                    const card = createProductCard(product);
+                    card.setAttribute('data-aos', 'fade-up');
+                    // Remove the heart button and replace with remove button
+                    const actions = card.querySelector('.product-card-actions');
+                    if (actions) {
+                        // Remove existing heart button
+                        const heartBtn = actions.querySelector('.product-card-action-btn');
+                        if (heartBtn) {
+                            heartBtn.remove();
+                        }
+                        // Add remove button
+                        const removeBtn = document.createElement('button');
+                        removeBtn.className = 'product-card-action-btn';
+                        removeBtn.setAttribute('aria-label', 'Remove from wishlist');
+                        removeBtn.innerHTML = '<i data-feather="x"></i>';
+                        removeBtn.onclick = () => {
+                            removeFromWishlist(item.id);
+                            loadWishlist();
+                        };
+                        actions.appendChild(removeBtn);
+                        // Initialize Feather Icons for the new button
+                        if (typeof feather !== 'undefined') {
+                            feather.replace();
+                        }
+                    }
+                    grid.appendChild(card);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

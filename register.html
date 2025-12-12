@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Logo Header -->
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="index.html" style="display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: inherit;">
+            <div class="brand-icon">
+                <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="brand-content">
+                <span class="brand-text">JEWELLERY</span>
+                <span class="brand-tagline">Timeless Elegance</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Register Section -->
+    <section class="section" style="padding-top: 2rem; min-height: calc(100vh - 200px); display: flex; align-items: center;">
+        <div class="container">
+            <div class="auth-container" style="max-width: 450px; margin: 0 auto; width: 100%;">
+                <div class="auth-card" style="background: var(--white); border-radius: var(--radius-lg); padding: 3rem; box-shadow: var(--shadow-xl);" data-aos="fade-up">
+                    <div class="auth-header" style="text-align: center; margin-bottom: 2rem;">
+                        <h1 class="page-title" style="font-size: 2rem; margin-bottom: 0.5rem;">Create Account</h1>
+                        <p style="color: var(--text-secondary);">Join us and start shopping for exquisite jewellery</p>
+                    </div>
+                    
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="John Doe" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required placeholder="••••••••" minlength="8" autocomplete="new-password">
+                            <small style="color: var(--text-light); font-size: 0.875rem; margin-top: 0.25rem; display: block;">Must be at least 8 characters</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••" minlength="8" autocomplete="new-password">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="terms" name="terms" required style="margin-top: 0.25rem;">
+                                <span style="font-size: 0.875rem; color: var(--text-secondary);">I agree to the <a href="#" style="color: var(--primary-color); text-decoration: none;">Terms & Conditions</a> and <a href="#" style="color: var(--primary-color); text-decoration: none;">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Create Account</button>
+                    </form>
+                    
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">Or sign up with</p>
+                        <div class="social-icons" style="display: flex; justify-content: center; gap: 1rem;">
+                            <a href="#" class="social-icon" aria-label="Facebook" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-light); border-radius: 50%; color: var(--text-primary); text-decoration: none; transition: var(--transition);">
+                                <i data-feather="facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-light); border-radius: 50%; color: var(--text-primary); text-decoration: none; transition: var(--transition);">
+                                <i data-feather="instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-light); border-radius: 50%; color: var(--text-primary); text-decoration: none; transition: var(--transition);">
+                                <i data-feather="twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Google" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-light); border-radius: 50%; color: var(--text-primary); text-decoration: none; transition: var(--transition);">
+                                <i data-feather="mail"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Already have an account?</p>
+                        <a href="login.html" class="btn btn-outline" style="width: 100%;">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Initialize Feather Icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            
+            // Validation
+            if (!fullName || !email || !password || !confirmPassword) {
+                Toast.show('Please fill in all fields', 'error');
+                return;
+            }
+            
+            if (password.length < 8) {
+                Toast.show('Password must be at least 8 characters', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                Toast.show('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (!terms) {
+                Toast.show('Please agree to the Terms & Conditions', 'error');
+                return;
+            }
+            
+            // Simulate registration
+            Toast.show('Account created successfully! Redirecting...', 'success');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        });
+    </script>
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--white);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        .form-group input::placeholder {
+            color: var(--text-light);
+        }
+        [data-theme="dark"] .auth-card,
+        [data-theme="dark"] .form-group input {
+            background: var(--dark-bg);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        [data-theme="dark"] .form-group input:focus {
+            border-color: var(--primary-color);
+        }
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .social-icon:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .social-icon i {
+            width: 20px;
+            height: 20px;
+        }
+        [data-theme="dark"] .social-icon {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .auth-card {
+                padding: 2rem 1.5rem !important;
+            }
+        }
+    </style>
+</body>
+</html>
