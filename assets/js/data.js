@@ -569,28 +569,28 @@ const categoriesData = [
         id: "necklaces",
         name: "Necklaces",
         description: "Elegant necklaces for every occasion",
-        image: "category-necklaces.jpg",
+        image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&h=600&fit=crop&auto=format&q=80",
         count: 6
     },
     {
         id: "earrings",
         name: "Earrings",
         description: "Stunning earrings to frame your face",
-        image: "category-earrings.jpg",
+        image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=600&fit=crop&auto=format&q=80",
         count: 4
     },
     {
         id: "rings",
         name: "Rings",
         description: "Symbols of love and commitment",
-        image: "category-rings.jpg",
+        image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=600&fit=crop&auto=format&q=80",
         count: 5
     },
     {
         id: "bracelets",
         name: "Bracelets",
         description: "Adorn your wrists with elegance",
-        image: "category-bracelets.jpg",
+        image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=600&fit=crop&auto=format&q=80",
         count: 5
     },
 ];

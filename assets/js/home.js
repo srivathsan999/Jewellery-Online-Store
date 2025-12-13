@@ -38,12 +38,8 @@ function loadCategories() {
         card.setAttribute('data-aos', 'fade-up');
         card.onclick = () => window.location.href = `category-${category.id}.html`;
         
-        const style = categoryStyles[category.id] || categoryStyles.necklaces;
-        
         card.innerHTML = `
-            <div class="category-card-bg" style="background: ${style.gradient};">
-                <i class="${style.icon}" style="font-size: 5rem; color: rgba(255, 255, 255, 0.9); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;"></i>
-            </div>
+            <img src="${category.image}" alt="${category.name}" class="category-card-image">
             <div class="category-card-overlay">
                 <h3 class="category-card-title">${category.name}</h3>
             </div>

@@ -128,6 +128,36 @@ img {
 }
 
 @media (max-width: 768px) {
+    /* Hide vertical scrollbars in mobile view */
+    * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    *::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+        display: none !important;
+    }
+    
+    /* Allow horizontal scrolling for carousels but hide scrollbar */
+    .carousel-container {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .carousel-container::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    
+    /* Prevent vertical overflow on sections (but allow page scrolling) */
+    .section,
+    .container {
+        overflow-y: hidden !important;
+    }
+    
     .container {
         padding: 0 var(--spacing-sm);
     }
@@ -332,6 +362,50 @@ img {
 .navbar-menu a:hover::after,
 .navbar-menu a.active::after {
     width: 100%;
+}
+
+/* Login and Register as similar buttons */
+.navbar-menu a[href="login.html"],
+.navbar-menu a[href="register.html"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    margin: 0;
+}
+
+.navbar-menu a[href="login.html"]::after,
+.navbar-menu a[href="register.html"]::after {
+    display: none;
+}
+
+.navbar-menu a[href="login.html"]:hover,
+.navbar-menu a[href="register.html"]:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .navbar-menu a[href="login.html"],
+[data-theme="dark"] .navbar-menu a[href="register.html"] {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .navbar-menu a[href="login.html"]:hover,
+[data-theme="dark"] .navbar-menu a[href="register.html"]:hover {
+    background: var(--primary-color);
+    color: var(--white);
 }
 
 .navbar-actions {
@@ -738,6 +812,36 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
 
 /* Tablet View - Keep menu visible with working dropdowns (769px to 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
+    /* Hide vertical scrollbars in tablet view */
+    * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    *::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+        display: none !important;
+    }
+    
+    /* Allow horizontal scrolling for carousels but hide scrollbar */
+    .carousel-container {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .carousel-container::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    
+    /* Prevent vertical overflow on sections (but allow page scrolling) */
+    .section,
+    .container {
+        overflow-y: hidden !important;
+    }
+    
     /* Footer social icons center alignment for tablet */
     .footer-social {
         justify-content: center;
@@ -758,6 +862,30 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     
     .hero-actions .btn {
         margin: 0 auto;
+    }
+    
+    /* Bestseller section - ensure label is above heading in tablet */
+    .bestseller-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bestseller-info .section-label {
+        order: 1;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .bestseller-info .section-title {
+        order: 2;
+    }
+    
+    /* Footer email input - reduce to 40% in tablet view */
+    .footer-section .newsletter-form input,
+    .footer .newsletter-form input {
+        width: 40% !important;
+        flex: 0 0 40% !important;
+        min-width: auto !important;
+        max-width: 40% !important;
     }
     
     .navbar-menu {
@@ -853,6 +981,88 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
         max-width: 280px;
         margin: 0;
         justify-self: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Fix alignment inside product cards in New Arrivals section for tablet */
+    .new-arrivals .product-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-md);
+        flex: 1;
+    }
+    
+    .new-arrivals .product-card-category {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .new-arrivals .product-card-title {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .new-arrivals .product-card-title a {
+        text-align: left;
+        display: block;
+    }
+    
+    .new-arrivals .product-card-price {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* Fix alignment inside product cards in New Arrivals section for tablet */
+    .new-arrivals .product-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-md);
+        flex: 1;
+        min-height: 200px;
+    }
+    
+    .new-arrivals .product-card-category {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .new-arrivals .product-card-title {
+        text-align: left;
+        width: 100%;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .new-arrivals .product-card-title a {
+        text-align: left;
+        display: block;
+    }
+    
+    /* Align prices in straight line across cards */
+    .new-arrivals .product-card-price {
+        width: 100%;
+        justify-content: flex-start;
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Center align Add to Cart button at bottom */
+    .new-arrivals .product-card .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     /* Dropdown menu for tablet - hidden by default, show on click */
@@ -1287,6 +1497,10 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
 .category-card-bg {
@@ -1574,9 +1788,32 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     padding-bottom: var(--spacing-sm);
 }
 
-.carousel-container::-webkit-scrollbar {
-    height: 6px;
-    display: block;
+/* Hide scrollbar in tablet and mobile, show in desktop */
+@media (max-width: 1024px) {
+    .carousel-container {
+        scrollbar-width: none !important; /* Firefox */
+        -ms-overflow-style: none !important; /* IE and Edge */
+    }
+    
+    .carousel-container::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
+
+/* Show scrollbar in desktop view */
+@media (min-width: 1025px) {
+    .carousel-container::-webkit-scrollbar {
+        height: 6px;
+        display: block;
+    }
+    
+    .carousel-container {
+        scrollbar-width: thin;
+        scrollbar-color: var(--text-light) var(--bg-light);
+        -ms-overflow-style: auto;
+    }
 }
 
 .carousel-container::-webkit-scrollbar-track {
@@ -1592,13 +1829,6 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
 
 .carousel-container::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
-}
-
-/* Show scrollbar for Firefox */
-.carousel-container {
-    scrollbar-width: thin;
-    scrollbar-color: var(--text-light) var(--bg-light);
-    -ms-overflow-style: auto;
 }
 
 [data-theme="dark"] .carousel-container::-webkit-scrollbar-track {
@@ -1624,16 +1854,32 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     height: 100%;
 }
 
-/* Ensure trending carousel scrollbar is visible */
-#trendingCarousel .carousel-container {
-    scrollbar-width: thin;
-    scrollbar-color: var(--text-light) var(--bg-light);
-    -ms-overflow-style: auto;
+/* Hide trending carousel scrollbar in tablet and mobile */
+@media (max-width: 1024px) {
+    #trendingCarousel .carousel-container {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+    
+    #trendingCarousel .carousel-container::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
 }
 
-#trendingCarousel .carousel-container::-webkit-scrollbar {
-    height: 8px;
-    display: block !important;
+/* Show trending carousel scrollbar in desktop view */
+@media (min-width: 1025px) {
+    #trendingCarousel .carousel-container {
+        scrollbar-width: thin;
+        scrollbar-color: var(--text-light) var(--bg-light);
+        -ms-overflow-style: auto;
+    }
+    
+    #trendingCarousel .carousel-container::-webkit-scrollbar {
+        height: 8px;
+        display: block !important;
+    }
 }
 
 #trendingCarousel .carousel-container::-webkit-scrollbar-track {
@@ -1672,6 +1918,24 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     max-width: 350px;
 }
 
+/* Mobile view - stack testimonials vertically one below one */
+@media (max-width: 768px) {
+    .testimonials-slider .carousel-container {
+        flex-direction: column !important;
+        overflow: visible !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        scroll-snap-type: none !important;
+    }
+    
+    .testimonials-slider .carousel-item {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
+}
+
 /* Center testimonials when there are fewer items */
 .testimonials-slider .carousel-container {
     justify-content: center;
@@ -1687,17 +1951,95 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     }
 }
 
+@media (max-width: 768px) {
+    /* Testimonials section - stack vertically one below one in mobile view */
+    .testimonials {
+        width: 100% !important;
+        overflow: visible !important;
+        padding: var(--spacing-md) 0 !important;
+    }
+    
+    .testimonials .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 var(--spacing-sm) !important;
+        margin: 0 auto !important;
+    }
+    
+    .testimonials-slider {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .testimonials-slider .carousel-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: var(--spacing-md) !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+    }
+    
+    .testimonials-slider .carousel-item {
+        flex: 0 0 auto !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        scroll-snap-align: none !important;
+    }
+    
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        padding: var(--spacing-md) !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .testimonial-text {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+}
+
 @media (max-width: 640px) {
     .carousel-item {
         flex: 0 0 85%;
     }
     
     .testimonials-slider .carousel-item {
-        flex: 0 0 85%;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        padding: 0 var(--spacing-xs) !important;
     }
     
     .testimonial-card {
-        min-height: 280px;
+        min-height: auto !important;
+        padding: var(--spacing-md) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
     }
 }
 
@@ -1945,13 +2287,60 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
 }
 
 .newsletter-form input {
-    flex: 1;
-    padding: 0.875rem 1.25rem;
+    flex: 2;
+    min-width: 200px;
+    padding: 0.875rem 1.5rem;
     border: none;
     border-radius: var(--radius-md);
     font-size: 1rem;
     background: var(--white);
     color: var(--text-primary);
+}
+
+.newsletter-form button {
+    flex: 0 0 auto;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    min-width: auto;
+    width: 80%;
+    max-width: 120px;
+}
+
+/* Footer newsletter form - ensure proper sizing */
+.footer .newsletter-form {
+    max-width: 100%;
+}
+
+.footer .newsletter-form input {
+    flex: 2;
+    min-width: 200px;
+}
+
+/* Tablet view - Footer email input 40% width */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .footer .newsletter-form {
+        max-width: 100% !important;
+    }
+    
+    .footer .newsletter-form input[type="email"],
+    .footer .newsletter-form input {
+        width: 40% !important;
+        flex: 0 0 40% !important;
+        min-width: auto !important;
+        max-width: 40% !important;
+    }
+    
+    .footer .newsletter-form button {
+        flex: 0 0 auto !important;
+    }
+}
+
+.footer .newsletter-form button.btn-sm {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    width: 80%;
+    max-width: 120px;
 }
 
 .newsletter-form input::placeholder {
@@ -2296,6 +2685,38 @@ img {
         margin-bottom: var(--spacing-md);
     }
     
+    /* Bestseller section - ensure label is above heading in tablet */
+    .bestseller-info {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .bestseller-info .section-label {
+        order: -1 !important;
+        margin-bottom: var(--spacing-sm) !important;
+        display: block !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+    
+    .bestseller-info .section-title {
+        order: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: var(--spacing-sm) !important;
+    }
+    
+    .bestseller-info .bestseller-description {
+        order: 1 !important;
+    }
+    
+    .bestseller-info .feature-list {
+        order: 2 !important;
+    }
+    
+    .bestseller-info .btn {
+        order: 3 !important;
+    }
+    
     /* Navbar adjustments */
     .navbar-content {
         gap: var(--spacing-xs);
@@ -2308,6 +2729,40 @@ img {
     .navbar-menu a {
         font-size: 0.9rem;
         padding: 0.5rem 0.5rem;
+    }
+    
+    /* Login and Register buttons - tablet (1024px) - reduced size and center aligned */
+    .navbar-menu a[href="login.html"],
+    .navbar-menu a[href="register.html"] {
+        padding: 0.4rem 0.9rem !important;
+        font-size: 0.8rem !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+    }
+    
+    /* Remove lines below Login and Register buttons in tablet */
+    .navbar-menu a[href="login.html"]::after,
+    .navbar-menu a[href="register.html"]::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Center the list items containing login/register buttons in tablet */
+    .navbar-menu li:last-child,
+    .navbar-menu li:nth-last-child(2) {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border-bottom: none !important;
+    }
+    
+    /* Center align navbar menu items in tablet */
+    .navbar-menu {
+        justify-content: center !important;
+        align-items: center !important;
     }
     
     .brand-text {
@@ -2341,6 +2796,59 @@ img {
         max-width: 280px;
         margin: 0;
         justify-self: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Fix alignment inside product cards in New Arrivals section for tablet */
+    .new-arrivals .product-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-md);
+        flex: 1;
+        min-height: 200px;
+    }
+    
+    .new-arrivals .product-card-category {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .new-arrivals .product-card-title {
+        text-align: left;
+        width: 100%;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    .new-arrivals .product-card-title a {
+        text-align: left;
+        display: block;
+    }
+    
+    /* Align prices in straight line across cards */
+    .new-arrivals .product-card-price {
+        width: 100%;
+        justify-content: flex-start;
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Center align Add to Cart button at bottom */
+    .new-arrivals .product-card .btn {
+        width: 100%;
+        text-align: center;
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     /* Hero section buttons center alignment for tablet */
@@ -2354,6 +2862,71 @@ img {
     }
     
     .hero-actions .btn {
+        margin: 0 auto;
+    }
+    
+    /* Login and Register buttons - tablet - reduced size and center aligned */
+    .navbar-menu a[href="login.html"],
+    .navbar-menu a[href="register.html"] {
+        padding: 0.4rem 0.9rem !important;
+        font-size: 0.8rem !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        margin: 0 auto !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+    }
+    
+    /* Remove lines below Login and Register buttons in tablet */
+    .navbar-menu a[href="login.html"]::after,
+    .navbar-menu a[href="register.html"]::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Center the list items containing login/register buttons in tablet */
+    .navbar-menu li:last-child,
+    .navbar-menu li:nth-last-child(2) {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border-bottom: none !important;
+    }
+    
+    /* Center align navbar menu items in tablet */
+    .navbar-menu {
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    /* View All Products button - reduce width in tablet */
+    .text-center .btn.btn-outline {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 200px;
+        width: auto;
+    }
+    
+    /* Explore Collection button - reduce width in tablet */
+    .btn-primary[href="shop.html"] {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 200px;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    /* Shop Collection button - reduce width in tablet */
+    .btn-primary[href="shop.html?collection=spring"] {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        max-width: 200px;
+        width: auto;
+        display: block;
         margin: 0 auto;
     }
     
@@ -2559,6 +3132,69 @@ img {
         gap: var(--spacing-md);
     }
     
+    /* Testimonials - ensure full display in mobile */
+    .testimonials {
+        width: 100% !important;
+        overflow: visible !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .testimonials .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: var(--spacing-sm) !important;
+        padding-right: var(--spacing-sm) !important;
+    }
+    
+    .testimonials-slider {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .testimonials-slider .carousel-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: var(--spacing-md) !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+    }
+    
+    .testimonials-slider .carousel-item {
+        flex: 0 0 auto !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .testimonial-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: var(--spacing-md) !important;
+        min-height: auto !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+    
     /* Blog cards */
     .blog-grid {
         grid-template-columns: 1fr;
@@ -2668,6 +3304,74 @@ img {
         max-width: 100%;
         font-size: 0.875rem;
         padding: 0.625rem 1rem;
+    }
+    
+    /* Login and Register buttons - mobile - reduced size and center aligned */
+    .navbar-menu a[href="login.html"],
+    .navbar-menu a[href="register.html"] {
+        padding: 0.4rem 0.85rem !important;
+        font-size: 0.8rem !important;
+        width: auto !important;
+        min-width: fit-content !important;
+        margin: 0.25rem auto !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    /* Remove lines below Login and Register buttons in mobile */
+    .navbar-menu a[href="login.html"]::after,
+    .navbar-menu a[href="register.html"]::after {
+        display: none !important;
+        content: none !important;
+    }
+    
+    /* Center the list items containing login/register buttons */
+    .navbar-menu li:last-child,
+    .navbar-menu li:nth-last-child(2) {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        border-bottom: none !important;
+    }
+    
+    /* Center align navbar menu items in mobile */
+    .navbar-menu {
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+    }
+    
+    /* View All Products button - reduce width in mobile */
+    .text-center .btn.btn-outline {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.85rem;
+        max-width: 180px;
+        width: auto;
+    }
+    
+    /* Explore Collection button - reduce width in mobile */
+    .btn-primary[href="shop.html"] {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.85rem;
+        max-width: 180px;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    /* Shop Collection button - reduce width in mobile */
+    .btn-primary[href="shop.html?collection=spring"] {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.85rem;
+        max-width: 180px;
+        width: auto;
+        display: block;
+        margin: 0 auto;
     }
     
     /* Product cards */
@@ -2882,6 +3586,37 @@ img {
 
 /* Ensure all images are responsive */
 @media (max-width: 1024px) {
+    /* Hide vertical scrollbars in tablet and mobile view */
+    * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        max-width: 100%;
+    }
+    
+    *::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important;
+        display: none !important;
+    }
+    
+    /* Allow horizontal scrolling for carousels but hide scrollbar */
+    .carousel-container {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .carousel-container::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    
+    /* Prevent vertical overflow on sections (but allow page scrolling) */
+    .section,
+    .container {
+        overflow-y: hidden !important;
+    }
+    
     img {
         max-width: 100% !important;
         height: auto !important;
@@ -2897,11 +3632,6 @@ img {
         max-width: 100%;
         height: auto;
         width: 100%;
-    }
-    
-    /* Fix overflow issues */
-    * {
-        max-width: 100%;
     }
     
     .container,

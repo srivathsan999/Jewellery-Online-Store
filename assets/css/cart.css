@@ -35,10 +35,10 @@
 
 .cart-item-remove-btn {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    width: 36px;
-    height: 36px;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,8 +61,8 @@
 
 .cart-item-remove-btn i,
 .cart-item-remove-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     stroke-width: 2.5;
     color: inherit;
     stroke: currentColor;
@@ -276,6 +276,77 @@
         grid-template-columns: 1fr 350px;
         gap: var(--spacing-md);
     }
+    
+    /* Apply button - fit text size and center in tablet */
+    .coupon-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: var(--spacing-xs);
+    }
+    
+    .coupon-section button.btn-outline.btn-sm,
+    .coupon-section button[onclick="applyCoupon()"],
+    button.btn-outline.btn-sm[onclick="applyCoupon()"] {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        min-width: auto !important;
+    }
+    
+    /* Proceed to Checkout button - fit text size and center in tablet */
+    .summary-card button.btn-primary.btn-lg,
+    .summary-card button[onclick="proceedToCheckout()"],
+    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
+    .cart-summary button.btn-primary.btn-lg {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        display: block !important;
+        margin: 1rem auto 0 auto !important;
+        min-width: auto !important;
+    }
+}
+
+/* Tablet view (769px to 1024px) - Reduce button sizes to fit text and center align */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Apply button - fit text size and center */
+    .coupon-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: var(--spacing-xs);
+    }
+    
+    .coupon-section button.btn-outline.btn-sm,
+    .coupon-section button[onclick="applyCoupon()"],
+    button.btn-outline.btn-sm[onclick="applyCoupon()"] {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        min-width: auto !important;
+    }
+    
+    /* Proceed to Checkout button - fit text size and center - override inline style */
+    .summary-card button.btn-primary.btn-lg,
+    .summary-card button[onclick="proceedToCheckout()"],
+    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
+    .cart-summary .summary-card button.btn-primary.btn-lg {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        display: block !important;
+        margin: 1rem auto 0 auto !important;
+        min-width: auto !important;
+    }
 }
 
 /* Tablet Portrait (768px and below) */
@@ -291,6 +362,40 @@
     
     .cart-summary {
         position: static;
+    }
+    
+    /* Apply button - fit text size and center in mobile */
+    .coupon-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: var(--spacing-xs);
+    }
+    
+    .coupon-section button.btn-outline.btn-sm,
+    .coupon-section button[onclick="applyCoupon()"],
+    button.btn-outline.btn-sm[onclick="applyCoupon()"] {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        min-width: auto !important;
+    }
+    
+    /* Proceed to Checkout button - fit text size and center in mobile */
+    .summary-card button.btn-primary.btn-lg,
+    .summary-card button[onclick="proceedToCheckout()"],
+    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
+    .cart-summary .summary-card button.btn-primary.btn-lg {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        display: block !important;
+        margin: 1rem auto 0 auto !important;
+        min-width: auto !important;
     }
     
     .cart-item {
@@ -313,6 +418,40 @@
     
     .summary-card {
         padding: var(--spacing-sm);
+    }
+    
+    /* Apply button - fit text size and center in mobile */
+    .coupon-section {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: var(--spacing-xs);
+    }
+    
+    .coupon-section button.btn-outline.btn-sm,
+    .coupon-section button[onclick="applyCoupon()"],
+    button.btn-outline.btn-sm[onclick="applyCoupon()"] {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.85rem !important;
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        min-width: auto !important;
+    }
+    
+    /* Proceed to Checkout button - fit text size and center in mobile */
+    .summary-card button.btn-primary.btn-lg,
+    .summary-card button[onclick="proceedToCheckout()"],
+    button.btn-primary.btn-lg[onclick="proceedToCheckout()"],
+    .cart-summary button.btn-primary.btn-lg {
+        width: auto !important;
+        max-width: none !important;
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.9rem !important;
+        display: block !important;
+        margin: 1rem auto 0 auto !important;
+        min-width: auto !important;
     }
 }
 

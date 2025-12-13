@@ -233,6 +233,16 @@
 
 /* Tablet (1024px and below) */
 @media (max-width: 1024px) {
+    /* Reduce space above breadcrumbs in tablet view - override inline style */
+    .container[style*="padding-top"] {
+        padding-top: calc(var(--navbar-height) + 1rem) !important;
+    }
+    
+    /* Reduce space below shop-header section in tablet view */
+    .shop-header.section {
+        padding-bottom: var(--spacing-sm) !important;
+    }
+    
     .shop-layout {
         grid-template-columns: 250px 1fr;
         gap: var(--spacing-md);
