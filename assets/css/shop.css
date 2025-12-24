@@ -235,12 +235,30 @@
 @media (max-width: 1024px) {
     /* Reduce space above breadcrumbs in tablet view - override inline style */
     .container[style*="padding-top"] {
-        padding-top: calc(var(--navbar-height) + 1rem) !important;
+        padding-top: calc(var(--navbar-height) + 0.5rem) !important;
     }
     
     /* Reduce space below shop-header section in tablet view */
-    .shop-header.section {
-        padding-bottom: var(--spacing-sm) !important;
+    .shop-header.section,
+    section.shop-header,
+    .section.shop-header {
+        padding: calc(var(--navbar-height) + 0.5rem) 0 0.5rem 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Reduce space above shop-content (24 products) in tablet view */
+    .shop-content.section,
+    section.shop-content,
+    .section.shop-content {
+        padding: 0.5rem 0 var(--spacing-lg) 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Reduce space between sections */
+    .shop-header + .shop-content,
+    section.shop-header + section.shop-content {
+        margin-top: 0 !important;
+        padding-top: 0.5rem !important;
     }
     
     .shop-layout {
@@ -260,7 +278,30 @@
 /* Tablet Portrait (768px and below) */
 @media (max-width: 768px) {
     .shop-header {
-        padding-top: calc(var(--navbar-height) + 1.5rem);
+        padding-top: calc(var(--navbar-height) + 0.5rem);
+    }
+    
+    /* Reduce space below shop-header section in mobile view */
+    .shop-header.section,
+    section.shop-header,
+    .section.shop-header {
+        padding: calc(var(--navbar-height) + 0.5rem) 0 0.5rem 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Reduce space above shop-content (24 products) in mobile view */
+    .shop-content.section,
+    section.shop-content,
+    .section.shop-content {
+        padding: 0.5rem 0 var(--spacing-md) 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Reduce space between sections */
+    .shop-header + .shop-content,
+    section.shop-header + section.shop-content {
+        margin-top: 0 !important;
+        padding-top: 0.5rem !important;
     }
     
     .page-title {
@@ -328,7 +369,7 @@
 /* Large Mobile (425px and below) */
 @media (max-width: 425px) {
     .shop-header {
-        padding-top: calc(var(--navbar-height) + 1rem);
+        padding-top: calc(var(--navbar-height) + 0.5rem);
     }
     
     .page-title {
@@ -395,4 +436,3 @@
         width: 100%;
     }
 }
-

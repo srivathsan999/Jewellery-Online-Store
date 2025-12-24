@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard - Manage products, orders, and users">
+    <title>Admin Dashboard - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Dashboard <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html" class="active">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
+                    </button>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">
+                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                        <i class="feather-heart" data-feather="heart"></i>
+                        <span class="badge" id="wishlistBadge">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <i class="feather-menu" data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <h2 class="admin-sidebar-brand">Admin Panel</h2>
+            </div>
+            
+            <nav class="admin-menu">
+                <a href="#overview" class="admin-menu-item active" data-tab="overview">
+                    <i class="feather-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#analytics" class="admin-menu-item" data-tab="analytics">
+                    <i class="feather-trending-up"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#products" class="admin-menu-item" data-tab="products">
+                    <i class="feather-box"></i>
+                    <span>Products</span>
+                </a>
+                <a href="#orders" class="admin-menu-item" data-tab="orders">
+                    <i class="feather-shopping-bag"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="#customers" class="admin-menu-item" data-tab="customers">
+                    <i class="feather-users"></i>
+                    <span>Customers</span>
+                </a>
+                <a href="#categories" class="admin-menu-item" data-tab="categories">
+                    <i class="feather-grid"></i>
+                    <span>Categories</span>
+                </a>
+                <a href="#reviews" class="admin-menu-item" data-tab="reviews">
+                    <i class="feather-star"></i>
+                    <span>Reviews</span>
+                </a>
+                <a href="#settings" class="admin-menu-item" data-tab="settings">
+                    <i class="feather-settings"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <div>
+                    <h1 class="page-title" style="margin: 0; font-size: 1.75rem;">Admin Dashboard</h1>
+                    <p style="margin: 0.25rem 0 0 0; color: var(--text-secondary);">Welcome back, Admin!</p>
+                </div>
+                <div style="display: flex; gap: var(--spacing-sm); align-items: center;">
+                    <button class="btn btn-outline">
+                        <i class="feather-bell"></i> Notifications
+                        <span class="badge" style="margin-left: 0.5rem;">3</span>
+                    </button>
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="feather-globe"></i> View Site
+                    </a>
+                </div>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="admin-tab active" id="overview">
+                <div class="admin-content">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-box" style="border-left-color: #667eea;" data-aos="fade-up">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h3 style="color: #667eea; font-size: 2.5rem; margin: 0;">$24,589</h3>
+                                    <p>Total Revenue</p>
+                                </div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="feather-dollar-sign"></i>
+                                </div>
+                            </div>
+                            <p style="margin-top: 0.5rem; color: var(--success); font-size: 0.875rem;">
+                                <i class="feather-trending-up"></i> +12.5% from last month
+                            </p>
+                        </div>
+                        
+                        <div class="stat-box" style="border-left-color: #f093fb;" data-aos="fade-up" data-aos-delay="100">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h3 style="color: #f093fb; font-size: 2.5rem; margin: 0;">156</h3>
+                                    <p>Total Orders</p>
+                                </div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="feather-shopping-bag"></i>
+                                </div>
+                            </div>
+                            <p style="margin-top: 0.5rem; color: var(--success); font-size: 0.875rem;">
+                                <i class="feather-trending-up"></i> +8.2% from last month
+                            </p>
+                        </div>
+                        
+                        <div class="stat-box" style="border-left-color: #4facfe;" data-aos="fade-up" data-aos-delay="200">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h3 style="color: #4facfe; font-size: 2.5rem; margin: 0;">1,234</h3>
+                                    <p>Total Customers</p>
+                                </div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="feather-users"></i>
+                                </div>
+                            </div>
+                            <p style="margin-top: 0.5rem; color: var(--success); font-size: 0.875rem;">
+                                <i class="feather-trending-up"></i> +15.3% from last month
+                            </p>
+                        </div>
+                        
+                        <div class="stat-box" style="border-left-color: #43e97b;" data-aos="fade-up" data-aos-delay="300">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h3 style="color: #43e97b; font-size: 2.5rem; margin: 0;">89</h3>
+                                    <p>Total Products</p>
+                                </div>
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="feather-box"></i>
+                                </div>
+                            </div>
+                            <p style="margin-top: 0.5rem; color: var(--success); font-size: 0.875rem;">
+                                <i class="feather-trending-up"></i> +5.7% from last month
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Recent Orders Table -->
+                    <div class="dashboard-section">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
+                            <h2>Recent Orders</h2>
+                            <a href="#orders" class="btn btn-outline">View All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Product</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentOrdersTable">
+                                    <!-- Orders will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="admin-tab" id="analytics">
+                <div class="admin-content">
+                    <h2>Sales Analytics</h2>
+                    <div class="analytics-charts">
+                        <div class="chart-container" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: var(--spacing-lg); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);">
+                            <h3 style="color: white; margin-bottom: var(--spacing-md);">Revenue Chart</h3>
+                            <div id="revenueChart" style="height: 300px; background: rgba(255,255,255,0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white;">
+                                <p>Chart visualization would go here</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-box" style="border-left-color: #667eea;">
+                                <h3 style="color: #667eea;">$8,234</h3>
+                                <p>Today's Revenue</p>
+                            </div>
+                            <div class="stat-box" style="border-left-color: #f093fb;">
+                                <h3 style="color: #f093fb;">23</h3>
+                                <p>Today's Orders</p>
+                            </div>
+                            <div class="stat-box" style="border-left-color: #4facfe;">
+                                <h3 style="color: #4facfe;">45</h3>
+                                <p>New Customers</p>
+                            </div>
+                            <div class="stat-box" style="border-left-color: #43e97b;">
+                                <h3 style="color: #43e97b;">12</h3>
+                                <p>Pending Orders</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Tab -->
+            <div class="admin-tab" id="products">
+                <div class="admin-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2>Product Management</h2>
+                        <button class="btn btn-primary" id="addProductBtn">
+                            <i class="feather-plus"></i> Add New Product
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable">
+                                <!-- Products will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div class="admin-tab" id="orders">
+                <div class="admin-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2>Order Management</h2>
+                        <div style="display: flex; gap: var(--spacing-sm);">
+                            <select class="sort-select">
+                                <option>All Status</option>
+                                <option>Pending</option>
+                                <option>Processing</option>
+                                <option>Delivered</option>
+                                <option>Cancelled</option>
+                            </select>
+                            <button class="btn btn-outline">
+                                <i class="feather-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Products</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTable">
+                                <!-- Orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Tab -->
+            <div class="admin-tab" id="customers">
+                <div class="admin-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2>Customer Management</h2>
+                        <input type="text" placeholder="Search customers..." class="sort-select" style="max-width: 300px;">
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Orders</th>
+                                    <th>Total Spent</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersTable">
+                                <!-- Customers will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Tab -->
+            <div class="admin-tab" id="categories">
+                <div class="admin-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                        <h2>Category Management</h2>
+                        <button class="btn btn-primary" id="addCategoryBtn">
+                            <i class="feather-plus"></i> Add Category
+                        </button>
+                    </div>
+                    
+                    <div class="categories-grid-admin" id="categoriesGridAdmin">
+                        <!-- Categories will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div class="admin-tab" id="reviews">
+                <div class="admin-content">
+                    <h2>Product Reviews</h2>
+                    <div class="reviews-list" id="reviewsList">
+                        <!-- Reviews will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="admin-tab" id="settings">
+                <div class="admin-content">
+                    <h2>Admin Settings</h2>
+                    <div class="settings-sections">
+                        <div class="settings-section">
+                            <h3>General Settings</h3>
+                            <form class="profile-form">
+                                <div class="form-group">
+                                    <label>Store Name</label>
+                                    <input type="text" value="Jewellery Online Store">
+                                </div>
+                                <div class="form-group">
+                                    <label>Store Email</label>
+                                    <input type="email" value="admin@jewellery.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Store Phone</label>
+                                    <input type="tel" value="+1 (555) 123-4567">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Settings</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer"></footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Initialize Feather Icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    </script>
+</body>
+</html>
+

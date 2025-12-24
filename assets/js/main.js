@@ -93,6 +93,7 @@ function initMobileMenu() {
     
     if (toggle && menu) {
         toggle.addEventListener('click', () => {
+            enhanceMobileMenu();
             const isActive = menu.classList.contains('active');
             menu.classList.toggle('active');
             // Keep the menu icon always as three-line hamburger (don't change to X)
@@ -107,7 +108,7 @@ function initMobileMenu() {
                 }
             }
             // Prevent body scroll when menu is open
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 if (menu.classList.contains('active')) {
                     document.body.style.overflow = 'hidden';
                 } else {
@@ -131,7 +132,7 @@ function initMobileMenu() {
                     }
                 }
                 // Restore body scroll when menu is closed
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1024) {
                     document.body.style.overflow = '';
                 }
             }
@@ -215,8 +216,31 @@ function initMobileMenu() {
             document.querySelectorAll('.dropdown').forEach(dropdown => {
                 dropdown.classList.remove('active');
             });
+            const menu = document.getElementById('navbarMenu');
+            if (menu) {
+                menu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         }, 250);
     });
+}
+
+function enhanceMobileMenu() {
+    const menu = document.getElementById('navbarMenu');
+    const brand = document.querySelector('.navbar-brand');
+    if (!menu) return;
+    menu.querySelectorAll('.menu-search, .menu-quick, .menu-footer, .menu-header').forEach(el => el.remove());
+    // Center Login and Register buttons and remove li borders
+    const loginLink = menu.querySelector('a[href="login.html"]');
+    const registerLink = menu.querySelector('a[href="register.html"]');
+    [loginLink, registerLink].forEach(link => {
+        if (link && link.parentElement) {
+            link.parentElement.classList.add('center-action');
+        }
+    });
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
 }
 
 // Smooth Scroll
@@ -593,4 +617,3 @@ window.addEventListener('wishlistUpdated', () => {
         updateAllWishlistButtons();
     }
 });
-

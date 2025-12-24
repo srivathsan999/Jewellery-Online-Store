@@ -67,6 +67,32 @@ function loadTrendingProducts() {
     });
     
     carousel.appendChild(container);
+    
+    const prev = document.createElement('button');
+    prev.className = 'carousel-nav prev';
+    prev.innerHTML = '<i data-feather="chevron-left"></i>';
+    const next = document.createElement('button');
+    next.className = 'carousel-nav next';
+    next.innerHTML = '<i data-feather="chevron-right"></i>';
+    
+    const getScrollAmount = () => {
+        const firstItem = container.querySelector('.carousel-item');
+        return firstItem ? firstItem.offsetWidth + parseFloat(getComputedStyle(container).gap || '0') : Math.floor(container.clientWidth * 0.8);
+    };
+    
+    prev.addEventListener('click', () => {
+        container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+        container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+    
+    carousel.appendChild(prev);
+    carousel.appendChild(next);
+    
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
 }
 
 // Load New Arrivals
@@ -114,4 +140,3 @@ function loadTestimonials() {
     
     slider.appendChild(container);
 }
-
