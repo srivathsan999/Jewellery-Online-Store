@@ -2,6 +2,24 @@
 
 .account-section {
     padding-top: calc(70px + 2rem);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+/* Remove scrollbar from account-section container when overview is active */
+.account-section .container:has(#overview.active) {
+    overflow-y: visible !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.account-section .container:has(#overview.active)::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .account-layout {
@@ -9,12 +27,97 @@
     grid-template-columns: 280px 1fr;
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+/* Remove scrollbar from account-layout when overview is active */
+.account-layout:has(#overview.active) {
+    overflow-y: visible !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.account-layout:has(#overview.active)::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .account-sidebar {
     position: sticky;
     top: calc(var(--navbar-height) + 2rem);
     height: fit-content;
+}
+
+.account-sidebar-header {
+    display: none;
+}
+
+.account-sidebar-brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.account-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--text-primary);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.account-menu-toggle i {
+    color: var(--text-primary);
+    width: 20px;
+    height: 20px;
+}
+
+[data-theme="dark"] .account-menu-toggle {
+    border-color: var(--white);
+}
+
+[data-theme="dark"] .account-menu-toggle i {
+    color: var(--white);
+}
+
+.account-sidebar-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--text-primary);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: auto;
+}
+
+.account-sidebar-close i {
+    color: var(--text-primary);
+    width: 18px;
+    height: 18px;
+}
+
+[data-theme="dark"] .account-sidebar-close {
+    border-color: var(--white);
+}
+
+[data-theme="dark"] .account-sidebar-close i {
+    color: var(--white);
 }
 
 .account-menu {
@@ -37,12 +140,32 @@
     color: var(--text-secondary);
     transition: var(--transition);
     margin-bottom: var(--spacing-xs);
+    cursor: pointer;
+    font-size: 0.95rem;
 }
 
-.account-menu-item:hover,
-.account-menu-item.active {
+.account-menu-item i {
+    display: none;
+}
+
+.account-menu-item span {
+    display: block;
+}
+
+.account-menu-item:hover {
     background: var(--bg-light);
     color: var(--primary-color);
+}
+
+.account-menu-item.active {
+    background: #F5E6D3;
+    color: #8B4513;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .account-menu-item.active {
+    background: #3a2a1a;
+    color: #D4AF37;
 }
 
 .account-main {
@@ -50,6 +173,24 @@
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+/* Remove scrollbar from account-main when overview is active */
+.account-main:has(#overview.active) {
+    overflow-y: visible !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.account-main:has(#overview.active)::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 [data-theme="dark"] .account-main {
@@ -240,18 +381,508 @@
     margin-top: var(--spacing-sm);
 }
 
-@media (max-width: 968px) {
+/* Tablet View - Keep sidebar visible */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .account-section {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .account-section .container {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding: 0 var(--spacing-sm);
+    }
+    
     .account-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: 220px 1fr;
+        gap: var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .account-sidebar {
-        position: static;
+        position: sticky;
+        top: calc(70px + 1rem);
+        height: fit-content;
+        width: 100%;
+        max-width: 220px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .account-menu {
+        padding: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .account-menu-item {
+        padding: 0.875rem var(--spacing-md);
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .account-menu-item i {
+        display: none;
+    }
+    
+    .account-main {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding: var(--spacing-md);
+    }
+    
+    .dashboard-stats {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .stat-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .order-item {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        word-wrap: break-word;
+    }
+    
+    .order-info {
+        min-width: 0;
+        overflow-x: hidden;
+        word-wrap: break-word;
+    }
+    
+    .order-info h3,
+    .order-info p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .address-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    /* Prevent all content from overflowing */
+    .account-main * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .account-main table,
+    .account-main .table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+    
+    .account-main img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Fix any grid or flex containers */
+    .account-main .grid,
+    .account-main [class*="grid"] {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Mobile View - Stack layout */
+@media (max-width: 768px) {
+    .account-section {
+        padding-top: calc(60px + 1rem);
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .account-section .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        padding: 0 var(--spacing-sm) !important;
+        margin: 0 !important;
+    }
+    
+    .account-layout {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        padding: 0 !important;
+    }
+    
+    .account-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .dashboard-header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-sm);
+    }
+    
+    .account-menu-toggle {
+        order: 0;
+        flex-shrink: 0;
+    }
+    
+    .dashboard-brand {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .logout-btn {
+        order: 2;
+        flex-shrink: 0;
+    }
+    
+    .account-sidebar {
+        position: fixed !important;
+        top: 60px;
+        left: 0;
+        width: 280px;
+        height: calc(100vh - 60px);
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: var(--shadow-xl);
+        background: var(--white);
+        overflow-y: auto;
+        margin-bottom: 0 !important;
+    }
+    
+    [data-theme="dark"] .account-sidebar {
+        background: var(--dark-bg);
+    }
+    
+    .account-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .account-sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .account-sidebar-close {
+        display: flex !important;
+        visibility: visible !important;
+    }
+    
+    .account-sidebar-brand {
+        font-size: 1.25rem;
+    }
+    
+    .account-menu {
+        display: block !important;
+        flex-direction: column !important;
+        padding: var(--spacing-sm) 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .account-menu-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        width: 100% !important;
+        white-space: normal !important;
+        margin-bottom: var(--spacing-xs) !important;
+        padding: 0.875rem var(--spacing-md) !important;
+        min-width: auto !important;
+        box-sizing: border-box !important;
+    }
+    
+    .account-menu-item i {
+        display: inline-block !important;
+        width: 18px;
+        height: 18px;
+        margin-right: var(--spacing-sm);
+    }
+    
+    .account-main {
+        padding: var(--spacing-sm) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+    }
+    
+    /* Prevent all content from overflowing in account-main */
+    .account-main * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .account-main > * {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
     }
     
     .order-item {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .order-id {
+        font-size: 1rem;
+        word-break: break-word;
+    }
+    
+    .order-date {
+        font-size: 0.8rem;
+    }
+    
+    .order-product-item {
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    
+    .order-product-image {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+    
+    .order-product-info {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+    
+    .order-product-name {
+        font-size: 0.8rem;
+        word-break: break-word;
+    }
+    
+    .order-product-price {
+        font-size: 0.75rem;
+    }
+    
+    .order-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        width: 100%;
+    }
+    
+    .order-total {
+        font-size: 1.1rem;
+    }
+    
+    .order-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .order-actions .btn {
+        width: 100%;
+    }
+    
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .stat-card {
+        padding: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .address-card {
+        padding: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .address-card-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .address-card-actions .btn {
+        width: 100%;
+    }
+    
+    /* Overlay for mobile sidebar */
+    .account-sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .account-sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    /* Prevent text overflow */
+    .account-main p,
+    .account-main span,
+    .account-main div,
+    .account-main h1,
+    .account-main h2,
+    .account-main h3,
+    .account-main h4,
+    .account-main h5,
+    .account-main h6,
+    .account-main li,
+    .account-main td,
+    .account-main th {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+    }
+    
+    /* Ensure all grids and flex containers don't overflow */
+    .account-main .grid,
+    .account-main [class*="grid"],
+    .account-main [class*="Grid"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Fix images */
+    .account-main img {
+        max-width: 100% !important;
+        height: auto !important;
+        width: auto !important;
+    }
+    
+    /* Fix tables */
+    .account-main table,
+    .account-main .table {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: auto !important;
+        display: block !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Fix buttons */
+    .account-main .btn {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+    
+    /* Fix forms */
+    .account-main form,
+    .account-main .form,
+    .account-main .profile-form,
+    .account-main .address-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Page titles */
+    .account-main .page-title,
+    .account-main h1 {
+        font-size: 1.5rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+    }
+    
+    .account-main .page-subtitle,
+    .account-main p {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
     }
 }
 

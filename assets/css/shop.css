@@ -1,5 +1,10 @@
 /* Shop Page Styles */
 
+/* Breadcrumbs margin-top for shop page */
+.breadcrumbs {
+    margin-top: -20px;
+}
+
 .shop-header {
     padding-top: calc(var(--navbar-height) + 2rem);
     text-align: center;

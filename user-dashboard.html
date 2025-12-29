@@ -45,6 +45,9 @@
             <button class="btn btn-outline logout-btn" onclick="window.location.href='index.html'">
                 <i class="feather-log-out"></i> Logout
             </button>
+            <button class="account-menu-toggle" id="accountMenuToggle" aria-label="Toggle menu">
+                <i class="feather-menu" data-feather="menu"></i>
+            </button>
         </div>
     </header>
 
@@ -53,7 +56,13 @@
         <div class="container">
             <div class="account-layout">
                 <!-- Sidebar -->
-                <aside class="account-sidebar">
+                <aside class="account-sidebar" id="accountSidebar">
+                    <div class="account-sidebar-header">
+                        <h2 class="account-sidebar-brand">My Account</h2>
+                        <button class="account-sidebar-close" id="accountSidebarClose" aria-label="Close menu">
+                            <i class="feather-x" data-feather="x"></i>
+                        </button>
+                    </div>
                     <div class="account-menu">
                         <div class="account-menu-item active" data-tab="overview">
                             <i class="feather-home"></i>

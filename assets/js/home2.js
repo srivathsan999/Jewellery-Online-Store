@@ -26,9 +26,8 @@ function loadBestsellers() {
 
 // Create Product Card
 function createProductCard(product) {
-    const discountBadge = product.discount > 0 
-        ? `<span class="product-badge">-${product.discount}%</span>` 
-        : '';
+    // Discount badge removed - no percentage display
+    const discountBadge = '';
     
     const oldPrice = product.oldPrice 
         ? `<span class="product-old-price">$${product.oldPrice.toFixed(2)}</span>` 

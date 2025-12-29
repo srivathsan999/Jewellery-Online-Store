@@ -67,6 +67,12 @@
     margin-top: 2px;
 }
 
+.dashboard-brand .brand-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
 .logout-btn {
     display: flex;
     align-items: center;
@@ -94,11 +100,70 @@
 /* User Dashboard Styles */
 .dashboard-tab {
     display: none;
+    overflow-y: visible;
 }
 
 .dashboard-tab.active {
     display: block;
     animation: fadeIn 0.3s ease;
+    overflow-y: visible;
+}
+
+/* Remove vertical scrollbar from overview section */
+#overview,
+.dashboard-tab#overview,
+.dashboard-tab.active#overview {
+    overflow-y: visible !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+#overview::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Ensure overview section containers don't have scrollbars */
+.account-main #overview,
+.dashboard-tab#overview,
+.dashboard-tab.active#overview {
+    overflow-y: visible !important;
+    overflow: visible !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+.account-main #overview::-webkit-scrollbar,
+.dashboard-tab#overview::-webkit-scrollbar,
+.dashboard-tab.active#overview::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Remove scrollbars from all child elements in overview */
+#overview *,
+#overview .dashboard-section,
+#overview .dashboard-stats,
+#overview .orders-list,
+#overview .quick-actions-grid {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+    overflow-y: visible !important;
+}
+
+#overview *::-webkit-scrollbar,
+#overview .dashboard-section::-webkit-scrollbar,
+#overview .dashboard-stats::-webkit-scrollbar,
+#overview .orders-list::-webkit-scrollbar,
+#overview .quick-actions-grid::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 @keyframes fadeIn {
@@ -594,6 +659,73 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    /* Tablet View - Add space between logo and logout */
+    .dashboard-header {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .dashboard-header-content {
+        padding: 0 var(--spacing-sm);
+        gap: var(--spacing-md);
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .dashboard-brand {
+        flex: 0 0 auto;
+        margin-right: auto;
+        min-width: 0;
+        max-width: calc(100% - 120px);
+    }
+    
+    .logout-btn {
+        flex: 0 0 auto;
+        margin-left: auto;
+        margin-right: 0;
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8rem;
+        min-width: auto;
+        width: auto;
+        order: 2;
+    }
+    
+    .admin-menu-toggle {
+        display: none;
+    }
+    
+    .logout-btn i {
+        width: 14px;
+        height: 14px;
+    }
+    
+    /* Prevent content overflow in tablet view */
+    .account-section,
+    .admin-layout {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .account-section .container,
+    .admin-layout .container {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding: 0 var(--spacing-sm);
+    }
+}
+
 @media (max-width: 968px) {
     .quick-actions-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -623,16 +755,393 @@
 }
 
 @media (max-width: 768px) {
+    /* Mobile View - Add more space between logo and logout */
+    .dashboard-header {
+        height: 60px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .dashboard-header-content {
+        padding: 0 var(--spacing-sm);
+        gap: var(--spacing-sm);
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        display: flex !important;
+    }
+    
+    .admin-menu-toggle,
+    .account-menu-toggle {
+        order: 0 !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-right: var(--spacing-xs);
+        width: 36px;
+        height: 36px;
+    }
+    
+    .dashboard-brand {
+        order: 1;
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: none;
+        overflow: visible;
+    }
+    
+    .dashboard-brand a {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        max-width: 100%;
+        overflow: visible;
+    }
+    
+    .dashboard-brand .brand-icon {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+    }
+    
+    .dashboard-brand .brand-content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        flex: 1;
+    }
+    
+    .dashboard-brand .brand-text {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+        line-height: 1.2;
+    }
+    
+    .dashboard-brand .brand-tagline {
+        display: none;
+    }
+    
+    .logout-btn {
+        order: 2;
+        flex: 0 0 auto;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        box-sizing: border-box;
+    }
+    
+    .logout-btn i {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+    
+    /* Adjust logout button text visibility on very small screens */
+    @media (max-width: 400px) {
+        .logout-btn {
+            padding: 0.4rem 0.5rem;
+            font-size: 0;
+        }
+        
+        .logout-btn i {
+            font-size: 1rem;
+        }
+    }
+    
+    /* Prevent content overflow */
+    .account-section,
+    .admin-layout {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+    
+    .order-item {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: var(--spacing-sm);
+        overflow-x: hidden;
+    }
+    
+    .order-header {
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    
+    .order-id {
+        font-size: 1rem;
+        word-break: break-word;
+        max-width: 100%;
+    }
+    
+    .order-date {
+        font-size: 0.8rem;
+    }
+    
+    .order-product-item {
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .order-product-image {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+    
+    .order-product-info {
+        min-width: 0;
+        flex: 1 1 auto;
+        max-width: calc(100% - 50px);
+    }
+    
+    .order-product-name {
+        word-break: break-word;
+        font-size: 0.8rem;
+    }
+    
+    .order-footer {
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .order-total {
+        font-size: 1.1rem;
+        word-break: break-word;
+    }
+    
+    .order-actions {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    
+    .order-actions .btn {
+        flex: 1 1 auto;
+        min-width: 80px;
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
     .quick-actions-grid {
         grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .dashboard-stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .stats-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .stat-card,
+    .stat-box {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: var(--spacing-sm);
+    }
+    
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table-responsive table {
+        min-width: 600px;
+    }
+    
+    /* Profile Avatar Section */
+    .profile-avatar-section {
+        padding: var(--spacing-sm);
+    }
+    
+    .avatar-preview {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Address Cards */
+    .address-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .address-card {
+        padding: var(--spacing-sm);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .address-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .address-card-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .address-card-actions .btn {
+        width: 100%;
+    }
+    
+    /* Settings Sections */
+    .settings-sections {
+        gap: var(--spacing-md);
+    }
+    
+    .settings-section {
+        padding: var(--spacing-md);
+    }
+    
+    .notification-settings,
+    .privacy-settings {
+        gap: var(--spacing-sm);
+    }
+    
+    /* Wishlist Grid */
+    .wishlist-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    /* Reviews List */
+    .reviews-list {
+        gap: var(--spacing-sm);
+    }
+    
+    .review-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    /* Categories Grid Admin */
+    .categories-grid-admin {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .category-card-admin {
+        padding: var(--spacing-sm);
+    }
+    
+    .category-card-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .category-card-actions .btn {
+        width: 100%;
+    }
+    
+    /* Chart Containers */
+    .chart-container {
+        padding: var(--spacing-sm) !important;
+        margin-bottom: var(--spacing-md) !important;
+    }
+    
+    #revenueChart,
+    #ordersChart {
+        height: 250px !important;
+    }
+    
+    /* Quick Actions Grid */
+    .quick-actions-grid {
+        gap: var(--spacing-sm);
+    }
+    
+    .quick-action-card {
+        padding: var(--spacing-md);
+    }
+    
+    .quick-action-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    /* Page Titles */
+    .page-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .page-subtitle {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Forms */
+    .profile-form,
+    .address-form {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .form-group {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.875rem;
+        padding: 0.625rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 0.625rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Stats Info */
+    .stat-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-info p {
+        font-size: 0.8rem;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
     }
 }
 

@@ -22,6 +22,9 @@
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/admin.css">
@@ -45,15 +48,21 @@
             <button class="btn btn-outline logout-btn" onclick="window.location.href='index.html'">
                 <i class="feather-log-out"></i> Logout
             </button>
+            <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="Toggle menu">
+                <i class="feather-menu" data-feather="menu"></i>
+            </button>
         </div>
     </header>
 
     <!-- Admin Dashboard -->
     <div class="admin-layout">
         <!-- Sidebar -->
-        <aside class="admin-sidebar">
+        <aside class="admin-sidebar" id="adminSidebar">
             <div class="admin-sidebar-header">
                 <h2 class="admin-sidebar-brand">Admin Panel</h2>
+                <button class="admin-sidebar-close" id="adminSidebarClose" aria-label="Close menu">
+                    <i class="feather-x" data-feather="x"></i>
+                </button>
             </div>
             
             <nav class="admin-menu">
@@ -181,10 +190,37 @@
                 <div class="admin-content">
                     <h2>Sales Analytics</h2>
                     <div class="analytics-charts">
-                        <div class="chart-container" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: var(--spacing-lg); border-radius: var(--radius-lg); margin-bottom: var(--spacing-lg);">
-                            <h3 style="color: white; margin-bottom: var(--spacing-md);">Revenue Chart</h3>
-                            <div id="revenueChart" style="height: 300px; background: rgba(255,255,255,0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white;">
-                                <p>Chart visualization would go here</p>
+                        <!-- Revenue Chart - Full Width -->
+                        <div class="chart-card chart-card-full">
+                            <div class="chart-header">
+                                <h3>Revenue Chart (Last 7 Days)</h3>
+                                <span class="chart-period">Last 7 Days</span>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="revenueChartCanvas"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- Orders and Category Charts - Side by Side -->
+                        <div class="charts-grid">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h3>Orders Chart</h3>
+                                    <span class="chart-period">Last 7 Days</span>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="ordersChartCanvas"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h3>Revenue by Category</h3>
+                                    <span class="chart-period">This Month</span>
+                                </div>
+                                <div class="chart-wrapper">
+                                    <canvas id="categoryChartCanvas"></canvas>
+                                </div>
                             </div>
                         </div>
                         
@@ -252,6 +288,9 @@
 
         </main>
     </div>
+    
+    <!-- Mobile Sidebar Overlay -->
+    <div class="admin-sidebar-overlay"></div>
 
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
@@ -260,6 +299,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="assets/js/data.js"></script>
     <script src="assets/js/components.js"></script>
     <script src="assets/js/main.js"></script>

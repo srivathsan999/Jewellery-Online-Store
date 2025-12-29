@@ -97,6 +97,21 @@ function initMobileMenu() {
             enhanceMobileMenu();
             const isActive = menu.classList.contains('active');
             menu.classList.toggle('active');
+            
+            // Close all dropdowns when opening/closing menu
+            if (!isActive) {
+                // Menu is opening - close all dropdowns
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                    const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                    if (dropdownMenu) {
+                        dropdownMenu.style.display = 'none';
+                        dropdownMenu.style.visibility = 'hidden';
+                        dropdownMenu.style.opacity = '0';
+                    }
+                });
+            }
+            
             // Keep the menu icon always as three-line hamburger (don't change to X)
             const icon = toggle.querySelector('i');
             if (icon) {
@@ -118,9 +133,15 @@ function initMobileMenu() {
             }
         });
         
-        // Close menu when clicking outside
+        // Close menu when clicking outside (but not on dropdown toggles or dropdown items)
         document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+            // Don't close menu if clicking on dropdown toggle, dropdown menu, or menu items
+            const isDropdownToggle = e.target.closest('.dropdown-toggle');
+            const isDropdownMenu = e.target.closest('.dropdown-menu');
+            const isMenuItem = menu.contains(e.target);
+            const isToggle = toggle.contains(e.target);
+            
+            if (!isMenuItem && !isToggle && !isDropdownToggle && !isDropdownMenu) {
                 menu.classList.remove('active');
                 const icon = toggle.querySelector('i');
                 if (icon) {
@@ -231,42 +252,72 @@ function enhanceMobileMenu() {
     const brand = document.querySelector('.navbar-brand');
     if (!menu) return;
     menu.querySelectorAll('.menu-search, .menu-quick, .menu-footer, .menu-header').forEach(el => el.remove());
-    // Center Login and Register buttons and remove li borders
-    const loginLink = menu.querySelector('a[href="login.html"]');
-    const registerLink = menu.querySelector('a[href="register.html"]');
-    [loginLink, registerLink].forEach(link => {
-        if (link && link.parentElement) {
-            link.parentElement.classList.add('center-action');
-        }
-    });
+    // Login and Register are now inside Account dropdown, no need for special centering
     if (typeof feather !== 'undefined') {
         feather.replace();
     }
 }
 
-// Home Dropdown Active State Handling
+// Navbar Active State Handling - Highlights menu item based on current page
 function initHomeDropdownActiveState() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const homeDropdown = document.querySelector('.navbar-menu .dropdown');
     
-    if (!homeDropdown) return;
+    // Remove active class from all dropdown toggles
+    document.querySelectorAll('.navbar-menu .dropdown-toggle').forEach(toggle => {
+        toggle.classList.remove('active');
+    });
     
-    const dropdownToggle = homeDropdown.querySelector('.dropdown-toggle');
-    const homeLink = homeDropdown.querySelector('a[href="index.html"]');
-    const home2Link = homeDropdown.querySelector('a[href="home2.html"]');
+    // Remove active class from all menu links (top-level links only, not dropdown items)
+    document.querySelectorAll('.navbar-menu > li > a').forEach(link => {
+        link.classList.remove('active');
+    });
     
-    // Remove active class from all links
-    if (homeLink) homeLink.classList.remove('active');
-    if (home2Link) home2Link.classList.remove('active');
-    if (dropdownToggle) dropdownToggle.classList.remove('active');
+    // Check if current page is a category page
+    const categoryPages = ['category-necklaces.html', 'category-earrings.html', 'category-bracelets.html', 'category-rings.html'];
+    const isCategoryPage = categoryPages.includes(currentPage);
     
-    // Set active state based on current page
+    // Check if current page is an account page
+    const accountPages = ['login.html', 'register.html', 'user-dashboard.html', 'admin-dashboard.html'];
+    const isAccountPage = accountPages.includes(currentPage);
+    
+    // Handle category pages - highlight Categories dropdown
+    if (isCategoryPage) {
+        const dropdowns = document.querySelectorAll('.navbar-menu .dropdown');
+        const categoriesDropdown = dropdowns[0]; // Categories is the first dropdown
+        if (categoriesDropdown) {
+            const categoriesToggle = categoriesDropdown.querySelector('.dropdown-toggle');
+            if (categoriesToggle) {
+                categoriesToggle.classList.add('active');
+            }
+        }
+        return;
+    }
+    
+    // Handle account pages - highlight Account dropdown
+    if (isAccountPage) {
+        const dropdowns = document.querySelectorAll('.navbar-menu .dropdown');
+        const accountDropdown = dropdowns[1]; // Account is the second dropdown
+        if (accountDropdown) {
+            const accountToggle = accountDropdown.querySelector('.dropdown-toggle');
+            if (accountToggle) {
+                accountToggle.classList.add('active');
+            }
+        }
+        return;
+    }
+    
+    // Handle regular pages - highlight the matching menu link
+    const menuLink = document.querySelector(`.navbar-menu a[href="${currentPage}"]`);
+    if (menuLink && !menuLink.classList.contains('dropdown-toggle')) {
+        menuLink.classList.add('active');
+    }
+    
+    // Handle index.html or empty path
     if (currentPage === 'index.html' || currentPage === '') {
-        if (homeLink) homeLink.classList.add('active');
-        if (dropdownToggle) dropdownToggle.classList.add('active');
-    } else if (currentPage === 'home2.html') {
-        if (home2Link) home2Link.classList.add('active');
-        if (dropdownToggle) dropdownToggle.classList.add('active');
+        const homeLink = document.querySelector('.navbar-menu a[href="index.html"]');
+        if (homeLink) {
+            homeLink.classList.add('active');
+        }
     }
 }
 
