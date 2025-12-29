@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Our Most Loved Jewellery - Premium handcrafted pieces. Shop bestsellers, certified jewellery, secure payments. Find your perfect piece today.">
+    <meta name="keywords" content="jewellery, jewelry, gold, diamond, luxury, necklaces, earrings, rings, bracelets, bestsellers">
+    <title>Discover Our Most Loved Jewellery - Jewellery Online Store</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <div class="brand-icon">
+                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-text">JEWELLERY</span>
+                            <span class="brand-tagline">Timeless Elegance</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Home <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="home2.html" class="active">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="category-necklaces.html">Necklaces</a></li>
+                            <li><a href="category-earrings.html">Earrings</a></li>
+                            <li><a href="category-bracelets.html">Bracelets</a></li>
+                            <li><a href="category-rings.html">Rings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Dashboard <i class="feather-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-dashboard.html">User Dashboard</a></li>
+                            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
+                    </button>
+                    <a href="cart.html" class="icon-btn" aria-label="Cart">
+                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+                        <i class="feather-heart" data-feather="heart"></i>
+                        <span class="badge" id="wishlistBadge">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <i class="feather-menu" data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conversion Hero Section -->
+    <section class="hero conversion-hero" data-aos="fade-in">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1920&h=1080&fit=crop" alt="Luxury Jewellery Collection" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                    Discover Our Most Loved Jewellery
+                </h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Handcrafted with precision, certified for quality, trusted by thousands. Find your perfect piece of timeless elegance.
+                </p>
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+                    <a href="#bestsellers" class="btn btn-primary">Shop Bestsellers</a>
+                    <a href="shop.html" class="btn btn-outline">View Collections</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestselling Products (Above the Fold) -->
+    <section class="section bestsellers-section" id="bestsellers" style="padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Bestselling Products</h2>
+                <p class="section-subtitle">Our most loved pieces, handpicked for you</p>
+            </div>
+            <div class="products-grid" id="bestsellersGrid" style="margin-top: 3rem;">
+                <!-- Bestselling products will be loaded here -->
+            </div>
+            <div class="text-center" data-aos="fade-up" style="margin-top: 3rem;">
+                <a href="shop.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop by Occasion / Collection -->
+    <section class="section collections-section" style="background: var(--bg-light); padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Shop by Occasion</h2>
+                <p class="section-subtitle">Find the perfect piece for every moment</p>
+            </div>
+            <div class="collections-grid" id="collectionsGrid" style="margin-top: 3rem;">
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" alt="Bridal Collection">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Bridal</h3>
+                        <p>Timeless pieces for your special day</p>
+                        <a href="shop.html?collection=wedding" class="btn btn-outline">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600&h=400&fit=crop" alt="Daily Wear Collection">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Daily Wear</h3>
+                        <p>Elegant pieces for everyday elegance</p>
+                        <a href="shop.html" class="btn btn-outline">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" alt="Festive Collection">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Festive</h3>
+                        <p>Celebrate with stunning designs</p>
+                        <a href="shop.html" class="btn btn-outline">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop" alt="Gifting Collection">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Gifting</h3>
+                        <p>Perfect gifts for your loved ones</p>
+                        <a href="shop.html" class="btn btn-outline">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Customers Choose Us -->
+    <section class="section trust-section" style="padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Why Customers Choose Us</h2>
+                <p class="section-subtitle">Your trust is our commitment</p>
+            </div>
+            <div class="trust-cards-grid" style="margin-top: 3rem;">
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="trust-icon">
+                        <i class="feather-award"></i>
+                    </div>
+                    <h3>Certified Jewellery</h3>
+                    <p>All our pieces come with certification and authenticity guarantee. Quality you can trust.</p>
+                </div>
+                
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="trust-icon">
+                        <i class="feather-shield"></i>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>Your transactions are protected with industry-leading encryption and secure payment gateways.</p>
+                </div>
+                
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="trust-icon">
+                        <i class="feather-refresh-cw"></i>
+                    </div>
+                    <h3>Easy Returns</h3>
+                    <p>Not satisfied? Return within 30 days for a full refund. Hassle-free returns process.</p>
+                </div>
+                
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="trust-icon">
+                        <i class="feather-tool"></i>
+                    </div>
+                    <h3>Trusted Craftsmanship</h3>
+                    <p>Handcrafted by skilled artisans with decades of experience. Excellence in every detail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Limited Highlight Section -->
+    <section class="section highlight-section" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%); padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <div class="highlight-content">
+                <div class="highlight-info" data-aos="fade-right">
+                    <span class="section-label">NEW ARRIVALS</span>
+                    <h2 class="section-title">Fresh Designs Just for You</h2>
+                    <p class="highlight-description">
+                        Discover our latest collection featuring contemporary designs that blend modern style with timeless elegance. 
+                        Each piece is carefully curated to bring you the finest in jewellery craftsmanship.
+                    </p>
+                    <a href="shop.html" class="btn btn-primary">Explore New Arrivals</a>
+                </div>
+                <div class="highlight-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&h=600&fit=crop" alt="New Arrivals" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews / Testimonials -->
+    <section class="section testimonials-section" style="padding-top: 4rem; padding-bottom: 4rem;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from satisfied customers</p>
+            </div>
+            <div class="testimonials-slider" id="testimonialsSlider" style="margin-top: 3rem;">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Purchase CTA -->
+    <section class="section final-cta-section" style="background: linear-gradient(135deg, var(--primary-color) 0%, #B8941F 100%); padding-top: 5rem; padding-bottom: 5rem; color: white;">
+        <div class="container">
+            <div class="final-cta-content" data-aos="fade-up">
+                <h2 class="final-cta-title" style="color: white; margin-bottom: 1rem;">Find Your Perfect Jewellery Today</h2>
+                <p class="final-cta-subtitle" style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; font-size: 1.125rem;">
+                    Browse our extensive collection and discover pieces that speak to your style and elegance.
+                </p>
+                <div class="final-cta-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="shop.html" class="btn" style="background: white; color: var(--primary-color); border: none;">Shop Now</a>
+                    <a href="shop.html" class="btn btn-outline" style="background: transparent; color: white; border: 2px solid white;">Explore Collections</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <!-- Footer content will be loaded from components -->
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/home2.js"></script>
+    <script>
+        // Initialize Feather Icons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    </script>
+</body>
+</html>
+

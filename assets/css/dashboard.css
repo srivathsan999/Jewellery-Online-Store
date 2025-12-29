@@ -1,5 +1,96 @@
 /* Dashboard Styles - Colorful and Interactive */
 
+/* Dashboard Header */
+.dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .dashboard-header {
+    background: var(--dark-bg);
+    border-bottom-color: var(--border-color);
+}
+
+.dashboard-header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-brand {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-brand a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.dashboard-brand .brand-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.dashboard-brand .brand-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-brand .brand-text {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+.dashboard-brand .brand-tagline {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    transition: var(--transition);
+}
+
+.logout-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.logout-btn i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Adjust dashboard sections to account for fixed header */
+/* Note: account-section padding is handled in account.css */
+/* Note: admin-layout padding is handled in admin.css */
+
 /* User Dashboard Styles */
 .dashboard-tab {
     display: none;

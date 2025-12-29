@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initNavbar();
     initMobileMenu();
+    initHomeDropdownActiveState();
     // Ensure menu icon is always set to three-line hamburger
     const menuToggle = document.getElementById('mobileMenuToggle');
     if (menuToggle) {
@@ -240,6 +241,32 @@ function enhanceMobileMenu() {
     });
     if (typeof feather !== 'undefined') {
         feather.replace();
+    }
+}
+
+// Home Dropdown Active State Handling
+function initHomeDropdownActiveState() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const homeDropdown = document.querySelector('.navbar-menu .dropdown');
+    
+    if (!homeDropdown) return;
+    
+    const dropdownToggle = homeDropdown.querySelector('.dropdown-toggle');
+    const homeLink = homeDropdown.querySelector('a[href="index.html"]');
+    const home2Link = homeDropdown.querySelector('a[href="home2.html"]');
+    
+    // Remove active class from all links
+    if (homeLink) homeLink.classList.remove('active');
+    if (home2Link) home2Link.classList.remove('active');
+    if (dropdownToggle) dropdownToggle.classList.remove('active');
+    
+    // Set active state based on current page
+    if (currentPage === 'index.html' || currentPage === '') {
+        if (homeLink) homeLink.classList.add('active');
+        if (dropdownToggle) dropdownToggle.classList.add('active');
+    } else if (currentPage === 'home2.html') {
+        if (home2Link) home2Link.classList.add('active');
+        if (dropdownToggle) dropdownToggle.classList.add('active');
     }
 }
 

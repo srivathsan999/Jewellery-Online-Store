@@ -1,7 +1,7 @@
 /* Account Pages Styles */
 
 .account-section {
-    padding-top: calc(var(--navbar-height) + 2rem);
+    padding-top: calc(70px + 2rem);
 }
 
 .account-layout {

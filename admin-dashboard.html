@@ -28,67 +28,25 @@
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="navbar-content">
-                <div class="navbar-brand">
-                    <a href="index.html">
-                        <div class="brand-icon">
-                            <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                        <div class="brand-content">
-                            <span class="brand-text">JEWELLERY</span>
-                            <span class="brand-tagline">Timeless Elegance</span>
-                        </div>
-                    </a>
-                </div>
-                
-                <ul class="navbar-menu" id="navbarMenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Categories <i class="feather-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="category-necklaces.html">Necklaces</a></li>
-                            <li><a href="category-earrings.html">Earrings</a></li>
-                            <li><a href="category-bracelets.html">Bracelets</a></li>
-                            <li><a href="category-rings.html">Rings</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">Dashboard <i class="feather-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="user-dashboard.html">User Dashboard</a></li>
-                            <li><a href="admin-dashboard.html" class="active">Admin Dashboard</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                </ul>
-                
-                <div class="navbar-actions">
-                    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
-                        <i class="feather-moon" id="themeIcon" data-feather="moon"></i>
-                    </button>
-                    <a href="cart.html" class="icon-btn" aria-label="Cart">
-                        <i class="feather-shopping-cart" data-feather="shopping-cart"></i>
-                        <span class="badge" id="cartBadge">0</span>
-                    </a>
-                    <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
-                        <i class="feather-heart" data-feather="heart"></i>
-                        <span class="badge" id="wishlistBadge">0</span>
-                    </a>
-                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                        <i class="feather-menu" data-feather="menu"></i>
-                    </button>
-                </div>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="dashboard-header-content">
+            <div class="dashboard-brand">
+                <a href="index.html">
+                    <div class="brand-icon">
+                        <img src="favicon.svg" alt="Jewellery Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="brand-content">
+                        <span class="brand-text">JEWELLERY</span>
+                        <span class="brand-tagline">Timeless Elegance</span>
+                    </div>
+                </a>
             </div>
+            <button class="btn btn-outline logout-btn" onclick="window.location.href='index.html'">
+                <i class="feather-log-out"></i> Logout
+            </button>
         </div>
-    </nav>
+    </header>
 
     <!-- Admin Dashboard -->
     <div class="admin-layout">
@@ -107,29 +65,9 @@
                     <i class="feather-trending-up"></i>
                     <span>Analytics</span>
                 </a>
-                <a href="#products" class="admin-menu-item" data-tab="products">
-                    <i class="feather-box"></i>
-                    <span>Products</span>
-                </a>
                 <a href="#orders" class="admin-menu-item" data-tab="orders">
                     <i class="feather-shopping-bag"></i>
                     <span>Orders</span>
-                </a>
-                <a href="#customers" class="admin-menu-item" data-tab="customers">
-                    <i class="feather-users"></i>
-                    <span>Customers</span>
-                </a>
-                <a href="#categories" class="admin-menu-item" data-tab="categories">
-                    <i class="feather-grid"></i>
-                    <span>Categories</span>
-                </a>
-                <a href="#reviews" class="admin-menu-item" data-tab="reviews">
-                    <i class="feather-star"></i>
-                    <span>Reviews</span>
-                </a>
-                <a href="#settings" class="admin-menu-item" data-tab="settings">
-                    <i class="feather-settings"></i>
-                    <span>Settings</span>
                 </a>
             </nav>
         </aside>
@@ -137,19 +75,10 @@
         <!-- Main Content -->
         <main class="admin-main">
             <!-- Top Bar -->
-            <div class="admin-topbar">
-                <div>
+            <div class="admin-topbar" style="justify-content: center;">
+                <div style="text-align: center;">
                     <h1 class="page-title" style="margin: 0; font-size: 1.75rem;">Admin Dashboard</h1>
                     <p style="margin: 0.25rem 0 0 0; color: var(--text-secondary);">Welcome back, Admin!</p>
-                </div>
-                <div style="display: flex; gap: var(--spacing-sm); align-items: center;">
-                    <button class="btn btn-outline">
-                        <i class="feather-bell"></i> Notifications
-                        <span class="badge" style="margin-left: 0.5rem;">3</span>
-                    </button>
-                    <a href="index.html" class="btn btn-primary">
-                        <i class="feather-globe"></i> View Site
-                    </a>
                 </div>
             </div>
 
@@ -281,38 +210,6 @@
                 </div>
             </div>
 
-            <!-- Products Tab -->
-            <div class="admin-tab" id="products">
-                <div class="admin-content">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
-                        <h2>Product Management</h2>
-                        <button class="btn btn-primary" id="addProductBtn">
-                            <i class="feather-plus"></i> Add New Product
-                        </button>
-                    </div>
-                    
-                    <div class="table-responsive">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="productsTable">
-                                <!-- Products will be loaded here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
             <!-- Orders Tab -->
             <div class="admin-tab" id="orders">
                 <div class="admin-content">
@@ -353,93 +250,8 @@
                 </div>
             </div>
 
-            <!-- Customers Tab -->
-            <div class="admin-tab" id="customers">
-                <div class="admin-content">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
-                        <h2>Customer Management</h2>
-                        <input type="text" placeholder="Search customers..." class="sort-select" style="max-width: 300px;">
-                    </div>
-                    
-                    <div class="table-responsive">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Orders</th>
-                                    <th>Total Spent</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="customersTable">
-                                <!-- Customers will be loaded here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Categories Tab -->
-            <div class="admin-tab" id="categories">
-                <div class="admin-content">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
-                        <h2>Category Management</h2>
-                        <button class="btn btn-primary" id="addCategoryBtn">
-                            <i class="feather-plus"></i> Add Category
-                        </button>
-                    </div>
-                    
-                    <div class="categories-grid-admin" id="categoriesGridAdmin">
-                        <!-- Categories will be loaded here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reviews Tab -->
-            <div class="admin-tab" id="reviews">
-                <div class="admin-content">
-                    <h2>Product Reviews</h2>
-                    <div class="reviews-list" id="reviewsList">
-                        <!-- Reviews will be loaded here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Settings Tab -->
-            <div class="admin-tab" id="settings">
-                <div class="admin-content">
-                    <h2>Admin Settings</h2>
-                    <div class="settings-sections">
-                        <div class="settings-section">
-                            <h3>General Settings</h3>
-                            <form class="profile-form">
-                                <div class="form-group">
-                                    <label>Store Name</label>
-                                    <input type="text" value="Jewellery Online Store">
-                                </div>
-                                <div class="form-group">
-                                    <label>Store Email</label>
-                                    <input type="email" value="admin@jewellery.com">
-                                </div>
-                                <div class="form-group">
-                                    <label>Store Phone</label>
-                                    <input type="tel" value="+1 (555) 123-4567">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Settings</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer" id="footer"></footer>
 
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
