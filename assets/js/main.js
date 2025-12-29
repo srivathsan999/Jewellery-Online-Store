@@ -186,43 +186,31 @@ function initMobileMenu() {
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
                 if (dropdownMenu) {
                     if (dropdown.classList.contains('active')) {
-                        // Remove any inline styles that might hide it
-                        dropdownMenu.style.removeProperty('display');
-                        dropdownMenu.style.removeProperty('visibility');
-                        dropdownMenu.style.removeProperty('opacity');
-                        dropdownMenu.style.removeProperty('max-height');
-                        dropdownMenu.style.removeProperty('padding');
-                        
-                        // Force visibility with important values
-                        dropdownMenu.style.setProperty('display', 'block', 'important');
-                        dropdownMenu.style.setProperty('visibility', 'visible', 'important');
-                        dropdownMenu.style.setProperty('opacity', '1', 'important');
-                        dropdownMenu.style.setProperty('max-height', '500px', 'important');
-                        dropdownMenu.style.setProperty('padding', '0.5rem 0', 'important');
-                        dropdownMenu.style.setProperty('z-index', '1003', 'important');
+                        dropdownMenu.style.display = 'block';
+                        dropdownMenu.style.visibility = 'visible';
+                        dropdownMenu.style.opacity = '1';
+                        dropdownMenu.style.zIndex = '1002';
                         
                         // Make all list items and links visible
                         const listItems = dropdownMenu.querySelectorAll('li');
                         listItems.forEach(li => {
-                            li.style.setProperty('display', 'list-item', 'important');
-                            li.style.setProperty('visibility', 'visible', 'important');
-                            li.style.setProperty('opacity', '1', 'important');
+                            li.style.display = 'block';
+                            li.style.visibility = 'visible';
+                            li.style.opacity = '1';
                             
                             const links = li.querySelectorAll('a');
                             links.forEach(link => {
-                                link.style.setProperty('display', 'flex', 'important');
-                                link.style.setProperty('visibility', 'visible', 'important');
-                                link.style.setProperty('opacity', '1', 'important');
-                                link.style.removeProperty('color');
-                                link.style.setProperty('padding', '0.75rem 1.25rem', 'important');
+                                link.style.display = 'block';
+                                link.style.visibility = 'visible';
+                                link.style.opacity = '1';
+                                link.style.color = '';
+                                link.style.padding = '0.75rem 1.5rem';
                             });
                         });
                     } else {
-                        dropdownMenu.style.setProperty('display', 'block', 'important');
-                        dropdownMenu.style.setProperty('visibility', 'hidden', 'important');
-                        dropdownMenu.style.setProperty('opacity', '0', 'important');
-                        dropdownMenu.style.setProperty('max-height', '0', 'important');
-                        dropdownMenu.style.setProperty('padding', '0', 'important');
+                        dropdownMenu.style.display = 'none';
+                        dropdownMenu.style.visibility = 'hidden';
+                        dropdownMenu.style.opacity = '0';
                     }
                 }
             }
