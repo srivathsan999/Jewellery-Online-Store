@@ -309,6 +309,16 @@
         if (typeof feather !== 'undefined') {
             feather.replace();
         }
+        
+        // Ensure admin orders are loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load admin orders after a short delay to ensure DOM is ready
+            setTimeout(() => {
+                if (typeof loadAdminOrders === 'function') {
+                    loadAdminOrders();
+                }
+            }, 100);
+        });
     </script>
 </body>
 </html>

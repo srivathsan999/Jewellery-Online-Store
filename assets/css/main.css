@@ -1890,21 +1890,26 @@ a.icon-btn[href*="wishlist.html"]:hover svg {
     }
     
     /* Show dropdown menu only when parent dropdown has active class */
-    .dropdown.active .dropdown-menu {
+    .dropdown.active .dropdown-menu,
+    .navbar-menu.active .dropdown.active .dropdown-menu {
         opacity: 1 !important;
         visibility: visible !important;
         max-height: 500px !important;
         padding: 0.5rem 0 !important;
         display: block !important;
         pointer-events: auto !important;
+        z-index: 1003 !important;
+        position: static !important;
     }
     
     /* Ensure dropdown is hidden when not active, even if menu is active */
-    .dropdown:not(.active) .dropdown-menu {
+    .dropdown:not(.active) .dropdown-menu,
+    .navbar-menu.active .dropdown:not(.active) .dropdown-menu {
         opacity: 0 !important;
         visibility: hidden !important;
         max-height: 0 !important;
         padding: 0 !important;
+        display: block !important;
     }
     
     .dropdown.active .dropdown-menu li {

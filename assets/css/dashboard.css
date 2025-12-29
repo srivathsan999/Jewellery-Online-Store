@@ -109,7 +109,7 @@
     overflow-y: visible;
 }
 
-/* Remove vertical scrollbar from overview section */
+/* Remove vertical scrollbar from overview section - Comprehensive approach */
 #overview,
 .dashboard-tab#overview,
 .dashboard-tab.active#overview {
@@ -121,7 +121,9 @@
     -ms-overflow-style: none !important; /* IE and Edge */
 }
 
-#overview::-webkit-scrollbar {
+#overview::-webkit-scrollbar,
+.dashboard-tab#overview::-webkit-scrollbar,
+.dashboard-tab.active#overview::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
@@ -129,8 +131,8 @@
 
 /* Ensure overview section containers don't have scrollbars */
 .account-main #overview,
-.dashboard-tab#overview,
-.dashboard-tab.active#overview {
+.account-main .dashboard-tab#overview,
+.account-main .dashboard-tab.active#overview {
     overflow-y: visible !important;
     overflow: visible !important;
     scrollbar-width: none !important; /* Firefox */
@@ -138,8 +140,8 @@
 }
 
 .account-main #overview::-webkit-scrollbar,
-.dashboard-tab#overview::-webkit-scrollbar,
-.dashboard-tab.active#overview::-webkit-scrollbar {
+.account-main .dashboard-tab#overview::-webkit-scrollbar,
+.account-main .dashboard-tab.active#overview::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
@@ -161,6 +163,37 @@
 #overview .dashboard-stats::-webkit-scrollbar,
 #overview .orders-list::-webkit-scrollbar,
 #overview .quick-actions-grid::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* When overview tab is active, hide scrollbars on all parent containers */
+.account-section .container,
+.account-layout,
+.account-main {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+.account-section .container::-webkit-scrollbar,
+.account-layout::-webkit-scrollbar,
+.account-main::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Hide scrollbar on body when viewing dashboard overview */
+body:has(.dashboard-tab#overview.active),
+body:has(#overview.active) {
+    overflow-y: auto !important; /* Allow page scrolling but hide scrollbar */
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
+
+body:has(.dashboard-tab#overview.active)::-webkit-scrollbar,
+body:has(#overview.active)::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;

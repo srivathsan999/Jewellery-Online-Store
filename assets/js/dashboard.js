@@ -262,15 +262,339 @@ function initTabSwitching() {
     window.switchAdminTab = switchAdminTab;
 }
 
+// Sample Orders Data
+const sampleOrders = [
+    {
+        id: 'ORD-2024-001',
+        customer: 'John Doe',
+        customerEmail: 'john.doe@example.com',
+        products: [
+            { name: 'Elegant Gold Chain Necklace', quantity: 1, price: 1299.99 }
+        ],
+        total: 1299.99,
+        status: 'processing',
+        date: '2024-03-20',
+        paymentMethod: 'Credit Card'
+    },
+    {
+        id: 'ORD-2024-002',
+        customer: 'Sarah Johnson',
+        customerEmail: 'sarah.j@example.com',
+        products: [
+            { name: 'Diamond Stud Earrings', quantity: 1, price: 899.99 },
+            { name: 'Rose Gold Choker', quantity: 1, price: 699.99 }
+        ],
+        total: 1599.98,
+        status: 'delivered',
+        date: '2024-03-19',
+        paymentMethod: 'PayPal'
+    },
+    {
+        id: 'ORD-2024-003',
+        customer: 'Michael Chen',
+        customerEmail: 'michael.c@example.com',
+        products: [
+            { name: 'Platinum Wedding Ring', quantity: 1, price: 1999.99 }
+        ],
+        total: 1999.99,
+        status: 'pending',
+        date: '2024-03-21',
+        paymentMethod: 'Credit Card'
+    },
+    {
+        id: 'ORD-2024-004',
+        customer: 'Emily Davis',
+        customerEmail: 'emily.d@example.com',
+        products: [
+            { name: 'Pearl Strand Necklace', quantity: 1, price: 899.99 },
+            { name: 'Diamond Pendant Necklace', quantity: 1, price: 2499.99 }
+        ],
+        total: 3399.98,
+        status: 'delivered',
+        date: '2024-03-18',
+        paymentMethod: 'Credit Card'
+    },
+    {
+        id: 'ORD-2024-005',
+        customer: 'Robert Wilson',
+        customerEmail: 'robert.w@example.com',
+        products: [
+            { name: 'Gold Tennis Bracelet', quantity: 1, price: 1499.99 }
+        ],
+        total: 1499.99,
+        status: 'processing',
+        date: '2024-03-20',
+        paymentMethod: 'Debit Card'
+    },
+    {
+        id: 'ORD-2024-006',
+        customer: 'Lisa Anderson',
+        customerEmail: 'lisa.a@example.com',
+        products: [
+            { name: 'Silver Hoop Earrings', quantity: 2, price: 299.99 }
+        ],
+        total: 599.98,
+        status: 'cancelled',
+        date: '2024-03-17',
+        paymentMethod: 'Credit Card'
+    },
+    {
+        id: 'ORD-2024-007',
+        customer: 'David Brown',
+        customerEmail: 'david.b@example.com',
+        products: [
+            { name: 'Diamond Engagement Ring', quantity: 1, price: 3499.99 }
+        ],
+        total: 3499.99,
+        status: 'delivered',
+        date: '2024-03-16',
+        paymentMethod: 'Credit Card'
+    },
+    {
+        id: 'ORD-2024-008',
+        customer: 'Jennifer Martinez',
+        customerEmail: 'jennifer.m@example.com',
+        products: [
+            { name: 'Rose Gold Choker', quantity: 1, price: 699.99 },
+            { name: 'Diamond Stud Earrings', quantity: 1, price: 899.99 }
+        ],
+        total: 1599.98,
+        status: 'pending',
+        date: '2024-03-21',
+        paymentMethod: 'PayPal'
+    }
+];
+
+// Load Admin Orders
+function loadAdminOrders() {
+    // Load recent orders in overview tab
+    const recentOrdersTable = document.getElementById('recentOrdersTable');
+    if (recentOrdersTable) {
+        // Get recent 5 orders
+        const recentOrders = sampleOrders.slice(0, 5);
+        recentOrdersTable.innerHTML = recentOrders.map(order => {
+            const statusClass = order.status;
+            const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+            const mainProduct = order.products[0];
+            const date = new Date(order.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            
+            return `
+                <tr>
+                    <td><strong>${order.id}</strong></td>
+                    <td>
+                        <div>
+                            <strong>${order.customer}</strong><br>
+                            <small style="color: var(--text-secondary);">${order.customerEmail}</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            ${mainProduct.name}<br>
+                            <small style="color: var(--text-secondary);">Qty: ${mainProduct.quantity}</small>
+                        </div>
+                    </td>
+                    <td><strong>$${order.total.toFixed(2)}</strong></td>
+                    <td>
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </td>
+                    <td>${date}</td>
+                    <td>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button class="btn btn-outline" style="padding: 0.375rem 0.75rem; font-size: 0.875rem; display: flex; align-items: center; gap: 0.375rem;" onclick="viewOrder('${order.id}')" title="View">
+                                <i class="feather-eye"></i>
+                                <span>View</span>
+                            </button>
+                            <button class="btn btn-primary" style="padding: 0.375rem 0.75rem; font-size: 0.875rem; display: flex; align-items: center; gap: 0.375rem;" onclick="editOrderStatus('${order.id}')" title="Edit">
+                                <i class="feather-edit"></i>
+                                <span>Edit</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    }
+    
+    // Load all orders in orders tab
+    const ordersTable = document.getElementById('ordersTable');
+    if (ordersTable) {
+        ordersTable.innerHTML = sampleOrders.map(order => {
+            const statusClass = order.status;
+            const statusText = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+            const productsText = order.products.length === 1 
+                ? order.products[0].name 
+                : `${order.products[0].name} + ${order.products.length - 1} more`;
+            const date = new Date(order.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            
+            return `
+                <tr>
+                    <td><strong>${order.id}</strong></td>
+                    <td>
+                        <div>
+                            <strong>${order.customer}</strong><br>
+                            <small style="color: var(--text-secondary);">${order.customerEmail}</small>
+                        </div>
+                    </td>
+                    <td>${productsText}</td>
+                    <td><strong>$${order.total.toFixed(2)}</strong></td>
+                    <td>
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </td>
+                    <td>${date}</td>
+                    <td>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button class="btn btn-outline" style="padding: 0.375rem 0.75rem; font-size: 0.875rem; display: flex; align-items: center; gap: 0.375rem;" onclick="viewOrder('${order.id}')" title="View">
+                                <i class="feather-eye"></i>
+                                <span>View</span>
+                            </button>
+                            <button class="btn btn-primary" style="padding: 0.375rem 0.75rem; font-size: 0.875rem; display: flex; align-items: center; gap: 0.375rem;" onclick="editOrderStatus('${order.id}')" title="Edit">
+                                <i class="feather-edit"></i>
+                                <span>Edit</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+    }
+    
+    // Re-initialize Feather Icons
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
+}
+
+// View Order Details
+function viewOrder(orderId) {
+    const order = sampleOrders.find(o => o.id === orderId);
+    if (!order) {
+        Toast.show('Order not found', 'error');
+        return;
+    }
+    
+    const productsList = order.products.map(p => 
+        `<li>${p.name} x${p.quantity} - $${p.price.toFixed(2)}</li>`
+    ).join('');
+    
+    const modal = new Modal('orderDetailsModal');
+    modal.create(`
+        <h2>Order Details: ${order.id}</h2>
+        <div style="margin-top: 1.5rem;">
+            <h3>Customer Information</h3>
+            <p><strong>Name:</strong> ${order.customer}</p>
+            <p><strong>Email:</strong> ${order.customerEmail}</p>
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <h3>Order Items</h3>
+            <ul style="list-style: none; padding: 0;">
+                ${productsList}
+            </ul>
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+            <p><strong>Status:</strong> <span class="status-badge ${order.status}">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span></p>
+            <p><strong>Date:</strong> ${new Date(order.date).toLocaleDateString()}</p>
+            <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+        </div>
+    `);
+}
+
+// Edit Order Status
+function editOrderStatus(orderId) {
+    const order = sampleOrders.find(o => o.id === orderId);
+    if (!order) {
+        Toast.show('Order not found', 'error');
+        return;
+    }
+    
+    const modal = new Modal('editOrderModal');
+    modal.create(`
+        <h2>Edit Order Status: ${order.id}</h2>
+        <div style="margin-top: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem;"><strong>Status</strong></label>
+            <select id="orderStatusSelect" class="form-control" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
+                <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+            </select>
+        </div>
+        <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: flex-end;">
+            <button class="btn btn-outline" onclick="document.querySelector('#editOrderModal').querySelector('.modal').remove()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveOrderStatus('${orderId}')">Save Changes</button>
+        </div>
+    `);
+}
+
+// Save Order Status
+function saveOrderStatus(orderId) {
+    const select = document.getElementById('orderStatusSelect');
+    if (!select) return;
+    
+    const newStatus = select.value;
+    const order = sampleOrders.find(o => o.id === orderId);
+    if (order) {
+        order.status = newStatus;
+        loadAdminOrders(); // Reload orders
+        Toast.show('Order status updated successfully', 'success');
+        document.querySelector('#editOrderModal .modal').remove();
+    }
+}
+
+// Make functions available globally
+window.viewOrder = viewOrder;
+window.editOrderStatus = editOrderStatus;
+window.saveOrderStatus = saveOrderStatus;
+window.loadAdminOrders = loadAdminOrders;
+
+// Stub functions for missing load functions
+function loadUserOrders() {
+    // User orders loading - can be implemented later
+}
+
+function loadUserWishlist() {
+    // User wishlist loading - can be implemented later
+}
+
+function loadAdminProducts() {
+    // Admin products loading - can be implemented later
+}
+
+function loadAdminCustomers() {
+    // Admin customers loading - can be implemented later
+}
+
+function loadCategories() {
+    // Categories loading - can be implemented later
+}
+
+function loadReviews() {
+    // Reviews loading - can be implemented later
+}
+
 // Load Dashboard Data
 function loadDashboardData() {
-    loadUserOrders();
-    loadUserWishlist();
-    loadAdminOrders();
-    loadAdminProducts();
-    loadAdminCustomers();
-    loadCategories();
-    loadReviews();
+    try {
+        if (typeof loadUserOrders === 'function') loadUserOrders();
+        if (typeof loadUserWishlist === 'function') loadUserWishlist();
+        loadAdminOrders(); // Always load admin orders
+        if (typeof loadAdminProducts === 'function') loadAdminProducts();
+        if (typeof loadAdminCustomers === 'function') loadAdminCustomers();
+        if (typeof loadCategories === 'function') loadCategories();
+        if (typeof loadReviews === 'function') loadReviews();
+    } catch (error) {
+        console.error('Error loading dashboard data:', error);
+        // Still try to load admin orders even if other functions fail
+        loadAdminOrders();
+    }
     // Don't initialize charts here - wait for analytics tab to be active
 }
 
